@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1496BF8418D6D59C0094ED1B /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1496BF8318D6D59C0094ED1B /* MBProgressHUD.m */; };
+		1496BF8618D6D9200094ED1B /* ScanDetailViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1496BF8518D6D9200094ED1B /* ScanDetailViewController_iPad.xib */; };
 		6E1E21F618C3810800B2C3FC /* LocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E21F418C3810800B2C3FC /* LocationViewController.m */; };
 		6E1E21F718C3810800B2C3FC /* LocationViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1E21F518C3810800B2C3FC /* LocationViewController_iPhone.xib */; };
 		6E1E21FE18C3816B00B2C3FC /* PBSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E21FA18C3816B00B2C3FC /* PBSettingViewController.m */; };
@@ -32,7 +34,6 @@
 		6E25A6EF18CC712F00E137B3 /* GoodDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E25A6ED18CC712F00E137B3 /* GoodDetailViewController.m */; };
 		6E25A6F018CC712F00E137B3 /* GoodDetailViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E25A6EE18CC712F00E137B3 /* GoodDetailViewController_iPhone.xib */; };
 		6E25A6F218CC991F00E137B3 /* GoodDetailViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E25A6F118CC991F00E137B3 /* GoodDetailViewController_iPad.xib */; };
-		6E25A6F418CC9E8E00E137B3 /* ScanDetailViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E25A6F318CC9E8E00E137B3 /* ScanDetailViewController_iPad.xib */; };
 		6E25EE9718C744CD002E32CE /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E25EE9618C744CD002E32CE /* CoreVideo.framework */; };
 		6E25EE9918C744E2002E32CE /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E25EE9818C744E2002E32CE /* libiconv.dylib */; };
 		6E25EEB518C74E11002E32CE /* corner2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E25EEB318C74E11002E32CE /* corner2.png */; };
@@ -69,7 +70,6 @@
 		6E2B03AE18C0C5B10073D23B /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2B03AD18C0C5B10073D23B /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6E8A4D1018CB02F20062820A /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8A4D0F18CB02F20062820A /* ShareView.m */; };
 		6E8A4D1218CB030D0062820A /* ShareView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E8A4D1118CB030D0062820A /* ShareView_iPhone.xib */; };
-		6EA2EA7918CADB6A0058F4B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2EA7818CADB6A0058F4B1 /* MBProgressHUD.m */; };
 		6EA2EA7D18CADF670058F4B1 /* AttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2EA7C18CADF670058F4B1 /* AttributedLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6EE72E1318CB09C400E0C93A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE72E1218CB09C400E0C93A /* Social.framework */; };
 		6EE72E1518CB0B3800E0C93A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE72E1418CB0B3800E0C93A /* Accounts.framework */; };
@@ -198,6 +198,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1496BF8218D6D59C0094ED1B /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		1496BF8318D6D59C0094ED1B /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		1496BF8518D6D9200094ED1B /* ScanDetailViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScanDetailViewController_iPad.xib; path = Scan/ScanDetailViewController_iPad.xib; sourceTree = "<group>"; };
 		6E1E21F318C3810800B2C3FC /* LocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationViewController.h; sourceTree = "<group>"; };
 		6E1E21F418C3810800B2C3FC /* LocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationViewController.m; sourceTree = "<group>"; };
 		6E1E21F518C3810800B2C3FC /* LocationViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LocationViewController_iPhone.xib; sourceTree = "<group>"; };
@@ -235,7 +238,6 @@
 		6E25A6ED18CC712F00E137B3 /* GoodDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDetailViewController.m; sourceTree = "<group>"; };
 		6E25A6EE18CC712F00E137B3 /* GoodDetailViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodDetailViewController_iPhone.xib; sourceTree = "<group>"; };
 		6E25A6F118CC991F00E137B3 /* GoodDetailViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodDetailViewController_iPad.xib; sourceTree = "<group>"; };
-		6E25A6F318CC9E8E00E137B3 /* ScanDetailViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanDetailViewController_iPad.xib; sourceTree = "<group>"; };
 		6E25EE9618C744CD002E32CE /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		6E25EE9818C744E2002E32CE /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		6E25EEB318C74E11002E32CE /* corner2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = corner2.png; sourceTree = "<group>"; };
@@ -284,8 +286,6 @@
 		6E8A4D0E18CB02F20062820A /* ShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareView.h; sourceTree = "<group>"; };
 		6E8A4D0F18CB02F20062820A /* ShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareView.m; sourceTree = "<group>"; };
 		6E8A4D1118CB030D0062820A /* ShareView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareView_iPhone.xib; sourceTree = "<group>"; };
-		6EA2EA7718CADB6A0058F4B1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		6EA2EA7818CADB6A0058F4B1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		6EA2EA7B18CADF670058F4B1 /* AttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedLabel.h; sourceTree = "<group>"; };
 		6EA2EA7C18CADF670058F4B1 /* AttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedLabel.m; sourceTree = "<group>"; };
 		6EE72E1218CB09C400E0C93A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -620,6 +620,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1496BF8118D6D59C0094ED1B /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				1496BF8218D6D59C0094ED1B /* MBProgressHUD.h */,
+				1496BF8318D6D59C0094ED1B /* MBProgressHUD.m */,
+			);
+			name = MBProgressHUD;
+			path = Vendor/MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		6E1E21F218C3810800B2C3FC /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -719,7 +729,7 @@
 				6E25A6DD18CC67E800E137B3 /* ScanDetailViewController.h */,
 				6E25A6DE18CC67E800E137B3 /* ScanDetailViewController.m */,
 				6E25A6DF18CC67E800E137B3 /* ScanDetailViewController_iPhone.xib */,
-				6E25A6F318CC9E8E00E137B3 /* ScanDetailViewController_iPad.xib */,
+				1496BF8518D6D9200094ED1B /* ScanDetailViewController_iPad.xib */,
 			);
 			name = ScanDetailViewController;
 			sourceTree = "<group>";
@@ -856,16 +866,6 @@
 			path = ShareView;
 			sourceTree = "<group>";
 		};
-		6EA2EA7618CADB6A0058F4B1 /* MBProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				6EA2EA7718CADB6A0058F4B1 /* MBProgressHUD.h */,
-				6EA2EA7818CADB6A0058F4B1 /* MBProgressHUD.m */,
-			);
-			name = MBProgressHUD;
-			path = Zbar/MBProgressHUD;
-			sourceTree = "<group>";
-		};
 		6EA2EA7A18CADF670058F4B1 /* AttributedLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -987,10 +987,10 @@
 		766749F018B4FBD1000B268F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				1496BF8118D6D59C0094ED1B /* MBProgressHUD */,
 				76674A3F18B50B23000B268F /* SDWebImage */,
 				76674A2218B50B17000B268F /* AFNetworking */,
 				785A98D118A5771B004CE803 /* include */,
-				6EA2EA7618CADB6A0058F4B1 /* MBProgressHUD */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -1463,7 +1463,6 @@
 				7669C89118B84CB600C7ECF1 /* icon_refresh.png in Resources */,
 				7669C89218B84CB600C7ECF1 /* icon_refresh@2x.png in Resources */,
 				6E2A335818C4C2B90073F6AF /* ContactViewController_iPad.xib in Resources */,
-				6E25A6F418CC9E8E00E137B3 /* ScanDetailViewController_iPad.xib in Resources */,
 				7669C8A918B84CB600C7ECF1 /* scan_barcode_big.png in Resources */,
 				6E1E221118C3831D00B2C3FC /* PBHistoryViewController_iPhone.xib in Resources */,
 				7669C88A18B84CB600C7ECF1 /* icon_history@2x.png in Resources */,
@@ -1502,6 +1501,7 @@
 				6E25A6F018CC712F00E137B3 /* GoodDetailViewController_iPhone.xib in Resources */,
 				7669C8B918B84CB600C7ECF1 /* status_bar_previous.png in Resources */,
 				7669C87E18B84CB600C7ECF1 /* icon_copylink@2x.png in Resources */,
+				1496BF8618D6D9200094ED1B /* ScanDetailViewController_iPad.xib in Resources */,
 				7669C89718B84CB600C7ECF1 /* icon_setting.png in Resources */,
 				7669C89B18B84CB600C7ECF1 /* icon_twitter.png in Resources */,
 				6E8A4D1218CB030D0062820A /* ShareView_iPhone.xib in Resources */,
@@ -1554,7 +1554,6 @@
 				6E1E21FE18C3816B00B2C3FC /* PBSettingViewController.m in Sources */,
 				76674A6918B50B23000B268F /* UIImage+WebP.m in Sources */,
 				76674A6318B50B23000B268F /* SDWebImageDownloaderOperation.m in Sources */,
-				6EA2EA7918CADB6A0058F4B1 /* MBProgressHUD.m in Sources */,
 				76674A3A18B50B17000B268F /* AFSecurityPolicy.m in Sources */,
 				6E296E8218C4B7AF003E6A6E /* ContactViewController.m in Sources */,
 				6E1E221718C3838F00B2C3FC /* PBScanViewController.m in Sources */,
@@ -1571,6 +1570,7 @@
 				785A98A418A57695004CE803 /* main.m in Sources */,
 				6E1E21F618C3810800B2C3FC /* LocationViewController.m in Sources */,
 				76674A6A18B50B23000B268F /* UIImageView+WebCache.m in Sources */,
+				1496BF8418D6D59C0094ED1B /* MBProgressHUD.m in Sources */,
 				6E25A6EF18CC712F00E137B3 /* GoodDetailViewController.m in Sources */,
 				6E1E221D18C383ED00B2C3FC /* AppUtil.m in Sources */,
 				6E8A4D1018CB02F20062820A /* ShareView.m in Sources */,
