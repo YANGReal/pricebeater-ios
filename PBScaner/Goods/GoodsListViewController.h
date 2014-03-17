@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class GoodsListViewController;
+@protocol GoodsListViewControllerDelagate <NSObject>
+
+@optional
+- (void)backFromGoodsListViewController:(GoodsListViewController *)vc;
+
+@end
 
 @interface GoodsListViewController : PBBaseViewController
 @property (strong , nonatomic) NSArray *dataArray;
 @property (copy , nonatomic) NSString *keyword;
+
+@property (assign , nonatomic) id<GoodsListViewControllerDelagate>delagate;
 
 @end

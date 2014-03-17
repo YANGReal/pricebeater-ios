@@ -1398,7 +1398,7 @@
 				ORGANIZATIONNAME = "Huo Ju";
 				TargetAttributes = {
 					785A989318A57695004CE803 = {
-						DevelopmentTeam = WUGL4X3P3K;
+						DevelopmentTeam = 2427JA2MB5;
 					};
 					785A98B718A57695004CE803 = {
 						TestTargetID = 785A989318A57695004CE803;
@@ -1719,8 +1719,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Lin Zeng (U344YU3QDC)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lin Zeng (U344YU3QDC)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: YANG JUNTAO (X3SYKVFKUJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YANG JUNTAO (X3SYKVFKUJ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PBScaner/PBScanner-Prefix.pch";
 				INFOPLIST_FILE = "PBScaner/PBScanner-Info.plist";

@@ -40,6 +40,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]];
     [self.webView loadRequest:request];
     self.nextBtn.enabled = NO;
+    DLog(@"self.url = %@",_urlString);
     
 }
 

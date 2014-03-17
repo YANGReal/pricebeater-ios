@@ -86,11 +86,12 @@
         {
             code = [(AVMetadataMachineReadableCodeObject *)metadata stringValue];
            // NSLog(@"Code: %@", code);
+             [self stopScan];
             if ([self.delegate respondsToSelector:@selector(pbScannerViewDidOutputResult:)])
             {
                 [self.delegate pbScannerViewDidOutputResult:code];
             }
-            [self stopScan];
+           
         }
     }
     

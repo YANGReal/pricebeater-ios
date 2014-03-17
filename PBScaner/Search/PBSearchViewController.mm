@@ -50,6 +50,7 @@
 }
 
 
+#pragma mark - IBAction Method
 /*点击搜索栏*/
 - (IBAction)searchButtonCLicked:(id)sender
 {
@@ -57,6 +58,20 @@
     [self.searchBar resignFirstResponder];
     [self loadDataFromServerWithText:self.searchBar.text];
 }
+
+#pragma mark - 进入商品列表界面
+
+- (void)showGoodsListWithData:(NSArray *)data andKeyword:(NSString *)keyword
+{
+    GoodsListViewController *goodsVC = [[GoodsListViewController alloc] initWithNibName:@"GoodsListViewController" bundle:nil];
+    goodsVC.dataArray = data;
+    goodsVC.keyword = keyword;
+    [self hideMBLoading];
+    [self.navigationController pushViewController:goodsVC animated:YES];
+}
+
+
+#pragma mark - 从服务器加载数据
 
 - (void)loadDataFromServerWithText:(NSString *)text
 {
@@ -77,12 +92,7 @@
             NSArray *list = [dict objectForKey:@"response"];
             if (list.count!=0)
             {
-                GoodsListViewController *goodsVC = [[GoodsListViewController alloc] initWithNibName:@"GoodsListViewController" bundle:nil];
-                goodsVC.dataArray = list;
-                goodsVC.keyword = text;
-                [self hideMBLoading];
-                [self.navigationController pushViewController:goodsVC animated:YES];
-                
+                [self showGoodsListWithData:list andKeyword:text];
             }
             else
             {

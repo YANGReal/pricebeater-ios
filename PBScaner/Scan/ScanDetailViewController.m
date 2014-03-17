@@ -12,7 +12,7 @@
 #import "GoodsListViewController.h"
 @interface ScanDetailViewController ()<PBScannerViewDelegate,PBScanTagViewDelegate>
 {
-    int scanMode;
+
 }
 @property (strong , nonatomic) PBScannerView *readerView;
 @property (strong , nonatomic) PBScanTagView *scanTagView;
@@ -54,12 +54,19 @@
 
 - (void)setupUI
 {
-    [self startScanBarCode];
-    self.priceTagLabel.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
-    self.barCodeLabel.textColor = WHITE_COLOR;
-    self.barCodeBtn.userInteractionEnabled = NO;
-    self.priceTagLabel.userInteractionEnabled = YES;
-  
+    if (self.scanType == barCodeType)
+    {
+        [self startScanBarCode];
+       // self.priceTagLabel.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
+        //self.barCodeLabel.textColor = WHITE_COLOR;
+        //self.barCodeBtn.userInteractionEnabled = NO;
+        //self.priceTagLabel.userInteractionEnabled = YES;
+    }
+    else
+    {
+        [self startScanPriceTag];
+    }
+    
     [self.view.layer addSublayer:self.topView.layer];
     [self.view.layer addSublayer:self.bottomView.layer];
     [self.view.layer addSublayer:self.label.layer];
@@ -95,12 +102,16 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
     [((PBMainViewController *)self.tabBarController) revealTabBar];
+    if ([self.delegate respondsToSelector:@selector(backFromScanDetailViewController:)])
+    {
+        [self.delegate backFromScanDetailViewController:self];
+    }
 }
 
 
 - (void)startScanBarCode
 {
-    scanMode = 0;
+    self.scanType = barCodeType;
     [self.scanTagView stopScan];
     [self.scanTagView free];
     [self.scanTagView removeFromSuperview];
@@ -119,7 +130,7 @@
 
 - (void)startScanPriceTag
 {
-    scanMode = 1;
+    self.scanType = priceTagType;
     [self.readerView stopScan];
     [self.readerView removeFromSuperview];
     self.readerView = nil;
@@ -154,7 +165,7 @@
 {
     DLog(@"code = %@",code);
     NSString *key = nil;
-    if (scanMode == 0)
+    if (self.scanType == barCodeType)
     {
         key = @"upc";
     }

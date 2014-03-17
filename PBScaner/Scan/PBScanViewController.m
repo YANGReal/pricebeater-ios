@@ -6,9 +6,11 @@
 //  Copyright (c) 2014年 Huo Ju. All rights reserved.
 //
 
+#import "ScanDetailViewController.h"
 #import "PBScanViewController.h"
 #import "PBScannerView.h"
-@interface PBScanViewController ()<PBScannerViewDelegate>
+#import "GoodsListViewController.h"
+@interface PBScanViewController ()<PBScannerViewDelegate,ScanDetailViewControllerDelegate,GoodsListViewControllerDelagate>
 
 @property (strong , nonatomic) PBScannerView *readerView;
 @property (weak , nonatomic) IBOutlet UILabel *label;
@@ -65,7 +67,6 @@
 
 }
 
-
 - (void)animate
 {
     [UIView animateWithDuration:1.0 animations:^{
@@ -81,10 +82,62 @@
     }];
 }
 
+#pragma mark - 重置扫描界面
+
+- (void)resetScanView
+{
+    [self.promptView removeFromSuperview];
+    self.line.hidden = NO;
+    [self.readerView startScan];
+}
+
+
+#pragma mark -进入商品404界面
+
+- (void)showPromptView
+{
+    NSString *nibName = [AppUtil getNibNameFromUIViewController:@"PBScanViewController"];
+    self.promptView = [[[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil] lastObject];
+    
+    self.promptView.layer.frame = RECT(0, NAV_HEIGHT, [AppUtil getDeviceWidth], [AppUtil getDeviceHeight]-NAV_HEIGHT-TABBAR_HEIGHT);
+    [self.view addSubview:self.promptView];
+}
+
+#pragma mark -进入商品列表界面
+
+- (void)showGoodsListWithData:(NSArray *)data
+{
+    GoodsListViewController *goodsListVC = [[GoodsListViewController alloc] initWithNibName:@"GoodsListViewController" bundle:nil];
+    goodsListVC.dataArray = data;
+    goodsListVC.delagate = self;
+    [self.navigationController pushViewController:goodsListVC animated:YES];
+}
+
 #pragma mark - IBAction Method
+/*扫描priceTag界面*/
 - (IBAction)priceTagBtnClicked:(id)sender
 {
-    DLog(@"hehe");
+    ScanDetailViewController *scanDetailVC = [[ScanDetailViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"ScanDetailViewController"] bundle:nil];
+    scanDetailVC.scanType = priceTagType;
+    scanDetailVC.delegate = self;
+    [self.navigationController pushViewController:scanDetailVC animated:YES];
+    [((PBMainViewController *)self.tabBarController) hideTabBar];
+}
+
+#pragma mark -ScanDetailViewController delegate method
+
+- (void)backFromScanDetailViewController:(ScanDetailViewController *)vc
+{
+    [self resetScanView];
+}
+
+
+#pragma mark -GoodsListViewControllerDelagate method
+
+
+- (void)backFromGoodsListViewController:(GoodsListViewController *)vc
+{
+    [self resetScanView];
 }
 
 #pragma mark -PBScannerViewDelegate method
@@ -92,15 +145,17 @@
 
 - (void)pbScannerViewDidOutputResult:(NSString *)result
 {
-    DLog(@"result = %@",result);
+    DLog(@"result>>> = %@",result);
     self.line.hidden = YES;
     [self loadDataFromServerWithCode:result];
 }
 
 
+#pragma mark - 从服务器加载数据
+
 - (void)loadDataFromServerWithCode:(NSString *)code
 {
-    DLog(@"code = %@",code);
+    //DLog(@"code = %@",code);
     NSDictionary *params = [NSDictionary dictionaryWithObject:code forKey:@"upc"];
     [self showMBLoadingWithMessage:@"Loding"];
     [NBNetworkEngine loadDataWithURL:kRequestURL params:params completeHander:^(id jsonObject, BOOL success) {
@@ -108,19 +163,15 @@
         {
             NSDictionary *dict = (NSDictionary *)jsonObject;
             NSArray * data = [dict objectForKey:@"response"];
-            DLog(@"obj = %@",data);
             if (data.count!=0)
             {
-                
+                /*存在数据,进入商品列表界面*/
+                [self showGoodsListWithData:data];
             }
             else
             {
-                NSString *nibName = [AppUtil getNibNameFromUIViewController:@"PBScanViewController"];
-                self.promptView = [[[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil] lastObject];
-              
-                self.promptView.layer.frame = RECT(0, NAV_HEIGHT, [AppUtil getDeviceWidth], [AppUtil getDeviceHeight]-NAV_HEIGHT-TABBAR_HEIGHT);
-                [self.view addSubview:self.promptView];
-                
+                /*不存在商品信息,进入*/
+                [self showPromptView];
             }
             [self hideMBLoading];
         }

@@ -57,6 +57,10 @@
 
 - (void)back:(id)sender
 {
+    if ([self.delagate respondsToSelector:@selector(backFromGoodsListViewController:)])
+    {
+        [self.delagate backFromGoodsListViewController:self];
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -66,11 +70,11 @@
     BOOL success = [NSKeyedArchiver archiveRootObject:self.historyArray toFile:CACH_DOCUMENTS_PATH(@"history.plist")];
     if (success)
     {
-        NSLog(@"Archiver succeed!");
+        DLog(@"Archiver succeed!");
     }
     else
     {
-         NSLog(@"Archiver failed");
+         DLog(@"Archiver failed");
     }
 }
 
