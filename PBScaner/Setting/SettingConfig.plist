@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>item0</key>
+	<array>
+		<string>My Location</string>
+	</array>
+	<key>item1</key>
+	<array>
+		<string>About Pricebeater</string>
+		<string>Visit website</string>
+		<string>Contact us</string>
+		<string>Term of service</string>
+		<string>Vision</string>
+	</array>
+	<key>item2</key>
+	<array>
+		<string>Review on the App store</string>
+		<string>Share the Pricebeater App</string>
+	</array>
+</dict>
+</plist>
