@@ -10,6 +10,7 @@
 #import "PBScannerView.h"
 #import "PBScanTagView.h"
 #import "GoodsListViewController.h"
+#import "AppDelegate.h"
 @interface ScanDetailViewController ()<PBScannerViewDelegate,PBScanTagViewDelegate>
 {
 
@@ -56,15 +57,12 @@
 {
     if (self.scanType == barCodeType)
     {
-        [self startScanBarCode];
-       // self.priceTagLabel.textColor = [UIColor colorWithWhite:0.8 alpha:1.0];
-        //self.barCodeLabel.textColor = WHITE_COLOR;
-        //self.barCodeBtn.userInteractionEnabled = NO;
-        //self.priceTagLabel.userInteractionEnabled = YES;
+        
+        [self performSelectorInBackground:@selector(startScanBarCode) withObject:nil];
     }
     else
     {
-        [self startScanPriceTag];
+        [self performSelectorInBackground:@selector(startScanPriceTag) withObject:nil];
     }
     
     [self.view.layer addSublayer:self.topView.layer];
@@ -100,7 +98,11 @@
     
 - (void)back:(id)sender
 {
+    
     [self.navigationController popViewControllerAnimated:YES];
+    [self.scanTagView free];
+    [self.scanTagView removeFromSuperview];
+    [self.readerView removeFromSuperview];
     [((PBMainViewController *)self.tabBarController) revealTabBar];
     if ([self.delegate respondsToSelector:@selector(backFromScanDetailViewController:)])
     {
@@ -118,6 +120,7 @@
     self.scanTagView = nil;
     self.barCodeBtn.userInteractionEnabled = NO;
     self.tagBtn.userInteractionEnabled = YES;
+    
     self.readerView = [[PBScannerView alloc] initWithFrame:self.view.bounds];
     self.readerView.delegate = self;
     [self.view insertSubview:self.readerView atIndex:0];
@@ -134,9 +137,11 @@
     [self.readerView stopScan];
     [self.readerView removeFromSuperview];
     self.readerView = nil;
+    
     self.barCodeBtn.userInteractionEnabled = YES;
     self.tagBtn.userInteractionEnabled = NO;
     self.line.hidden = NO;
+    
     self.scanTagView = [[PBScanTagView alloc] initWithFrame:self.view.bounds];
     self.scanTagView.delegate = self;
     [self.view insertSubview:self.scanTagView atIndex:0];
@@ -174,7 +179,7 @@
         key = @"text";
     }
     NSDictionary *params = [NSDictionary dictionaryWithObject:code forKey:key];
-    [self showMBLoadingWithMessage:@"Loding"];
+   
     [NBNetworkEngine loadDataWithURL:kRequestURL params:params completeHander:^(id jsonObject, BOOL success) {
         if (success)
         {
@@ -219,17 +224,31 @@
 
 #pragma mark - PBScanTagViewDelegate method
 
+
+- (void)pbScanTagViewStartProcessImage:(UIImage *)image
+{
+    self.line.hidden = YES;
+    [self performSelectorOnMainThread:@selector(showMBLoadingWithMessage:) withObject:@"Loading" waitUntilDone:NO];
+}
+
 - (void)pbScanTagViewDidOutputResult:(NSString *)result
 {
     DLog(@"result = %@",result);
-    self.line.hidden = YES;
+   
+    
     [self loadDataFromServerWithCode:result];
 }
+
+
+
+
+#pragma mark -PBScannerViewDelegate
 
 - (void)pbScannerViewDidOutputResult:(NSString *)result
 {
     self.line.hidden = YES;
     DLog(@"result = %@",result);
+    [self showMBLoadingWithMessage:@"Loading"];
     [self loadDataFromServerWithCode:result];
 }
 
@@ -239,5 +258,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
 
 @end

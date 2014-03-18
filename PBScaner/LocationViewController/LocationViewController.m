@@ -45,6 +45,16 @@
     [self customLeftBarButtonItem];
     [self customRightBarButtonItem];
     [textField performSelector:@selector(becomeFirstResponder) withObject:nil afterDelay:0.3];
+    
+    NSString *location = [AppUtil getObjectForKey:@"location"];
+    if (location.length == 0)
+    {
+        textField.text = @"";
+    }
+    else
+    {
+        textField.text = location;
+    }
 }
 
 
@@ -86,7 +96,13 @@
 
 - (void)done:(id)sender
 {
-    DLog(@"23");
+    NSString *location = textField.text;
+    if (location.length !=0)
+    {
+        [AppUtil storeObject:location ForKey:@"location"];
+        [self showMBLoadingWithMessage:@"Saved!"];
+        [self performSelector:@selector(hideMBLoading) withObject:nil afterDelay:1.0];
+    }
     [textField resignFirstResponder];
 }
 

@@ -40,6 +40,7 @@
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     UIWindow *window = app.window;
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:window];
+    //[window.layer addSublayer:hud.layer];
     hud.alpha = 0.75;
     hud.labelText = message;
     hud.tag = 1234;

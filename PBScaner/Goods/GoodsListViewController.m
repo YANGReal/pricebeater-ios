@@ -66,7 +66,8 @@
 
 - (void)storeHistoryData:(id)data
 {
-    [self.historyArray addObject:data];
+    
+    [self.historyArray insertObject:data atIndex:0];
     BOOL success = [NSKeyedArchiver archiveRootObject:self.historyArray toFile:CACH_DOCUMENTS_PATH(@"history.plist")];
     if (success)
     {

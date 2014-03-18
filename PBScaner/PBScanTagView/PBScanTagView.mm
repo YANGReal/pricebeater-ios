@@ -126,7 +126,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 - (void)observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
 {
-    DLog(@"dict = %@",keyPath );
+    //DLog(@"dict = %@",keyPath );
     if([keyPath isEqualToString:@"adjustingFocus"])
     {
         BOOL adjustingFocus =[[change objectForKey:NSKeyValueChangeNewKey] isEqualToNumber:[NSNumber numberWithInt:1]];
@@ -235,6 +235,11 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 		
 	}
 	
+    if ([self.delegate respondsToSelector:@selector(pbScanTagViewStartProcessImage:)])
+    {
+        [self.delegate pbScanTagViewStartProcessImage:image];
+    }
+    
 	if (image.imageOrientation == UIImageOrientationLeft)
     {
 		DLog(@"image orientation left");
@@ -269,6 +274,12 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	return result;
 }
 
+
+- (void)removeFromSuperview
+{
+    [super removeFromSuperview];
+    [self stopScan];
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.

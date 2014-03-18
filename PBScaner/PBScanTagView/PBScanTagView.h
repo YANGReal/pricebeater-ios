@@ -13,6 +13,8 @@
 
 @optional
 
+- (void)pbScanTagViewStartProcessImage:(UIImage *)image;
+
 - (void)pbScanTagViewDidOutputResult:(NSString *)result;
 
 @end

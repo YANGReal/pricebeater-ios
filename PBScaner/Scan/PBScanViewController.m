@@ -56,7 +56,6 @@
     
     //self.label.layer.frame = self.label.bounds;
     [self.view.layer addSublayer:self.label.layer];
-    
     self.bgView.center = self.view.center;
     [self.view.layer addSublayer:self.bgView.layer];
     [UIView animateWithDuration:1.0 animations:^{
@@ -86,9 +85,14 @@
 
 - (void)resetScanView
 {
+    [self.view addSubview:_readerView];
+    [self.readerView startScan];
+    [self.view.layer addSublayer:self.label.layer];
+    self.bgView.center = self.view.center;
+    [self.view.layer addSublayer:self.bgView.layer];
     [self.promptView removeFromSuperview];
     self.line.hidden = NO;
-    [self.readerView startScan];
+    
 }
 
 

@@ -33,11 +33,13 @@
     [self setupBorder:CLEAR_COLOR cornerRadius:5.0];
 }
 
+
+/*点击视图上的图标按钮*/
 - (IBAction)iconBtnClicked:(UIButton *)sender
 {
     if ([self.delegate respondsToSelector:@selector(shareView:didSelectAtIndex:)])
     {
-        [self.delegate shareView:self didSelectAtIndex:sender.tag];
+        [self.delegate shareView:self didSelectAtIndex:(int)sender.tag];
     }
 }
 
