@@ -70,7 +70,8 @@
     //self.descLabel.text = [self.data stringAttribute:@"skuname"];
     NSString *price = [self.data stringAttribute:@"price"];
     self.priceLabel.text = [NSString stringWithFormat:@"$ %@",price];
-    [self highlightedTagsWithSkuName:[self.data stringAttribute:@"skuname"]];
+    NSString *skuName = [[self.data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
+    [self highlightedTagsWithSkuName:skuName];
    // CGPoint imgViewCenter = self.goodsImgView.center;
     
 }
