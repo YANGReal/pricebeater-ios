@@ -10,7 +10,7 @@
 #import "PhoneMainViewController.h"
 #import "GoodsListViewController.h"
 #import "ScanDetailViewController.h"
-
+#import "GoodDetailViewController.h"
 @interface PBSearchViewController ()<UIGestureRecognizerDelegate,UITextFieldDelegate>
 @property (weak,nonatomic) IBOutlet UITextField *searchBar;
 - (IBAction)searchButtonCLicked:(id)sender;
@@ -79,8 +79,13 @@
     {
         return;
     }
+    NSString *url = [SEARCH_URL(text) stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    GoodDetailViewController *detailVC = [[GoodDetailViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"GoodDetailViewController"] bundle:nil];
+    detailVC.urlString = url;
+    [self presentViewController:detailVC animated:YES completion:nil];
+    return;
     [self showMBLoadingWithMessage:@"Loading"];
-    //DLog(@"url = %@",SEARCH_API(text));
+   
     NSDictionary *params = [NSDictionary dictionaryWithObject:text forKey:@"text"];
     [NBNetworkEngine loadDataWithURL:kRequestURL params:params completeHander:^(id jsonObject, BOOL success) {
         

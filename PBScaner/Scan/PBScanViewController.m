@@ -17,6 +17,7 @@
 @property (weak , nonatomic) IBOutlet UIView *bgView;
 @property (weak , nonatomic) IBOutlet UIView *line;
 @property (weak , nonatomic) IBOutlet UIView *promptView;
+@property (strong , nonatomic) UIButton *backBtn;
 
 - (IBAction)priceTagBtnClicked:(id)sender;
 
@@ -37,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self customLeftBarButtonItem];
     [self setupUI];
 	// Do any additional setup after loading the view.
 }
@@ -48,7 +49,6 @@
     UIImageView *titleImageView = [[UIImageView alloc] initWithFrame:RECT(0, 0, 140, 40)];
     titleImageView.image = [UIImage imageNamed:@"logo.png"];
     self.navigationItem.titleView = titleImageView;
-
     self.readerView = [[PBScannerView alloc] initWithFrame:self.view.bounds];
     self.readerView.delegate = self;
     [self.view addSubview:self.readerView];
@@ -63,7 +63,37 @@
     } completion:^(BOOL finished) {
         [self animate];
     }];
+}
 
+
+- (void)customLeftBarButtonItem
+{
+    UIView *view = [[UIView alloc] initWithFrame:RECT(0, 0, 30, 30)];
+    view.backgroundColor = [UIColor clearColor];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageFromMainBundleFile:@"back.png"]];
+    imgView.y = 5;
+    [view addSubview:imgView];
+    self.backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.backBtn.frame = RECT(5, 0, 60, 30);
+    self.backBtn.titleLabel.font = [UIFont boldSystemFontOfSize:19];
+    [self.backBtn setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
+    [self.backBtn setTitle:@"Back" forState:UIControlStateNormal];
+    [self.backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    [view addSubview:self.backBtn];
+    self.backBtn.tag  = 100;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+}
+
+- (void)back:(UIButton *)sender
+{
+    //返回首页搜索
+    if (sender.tag == 100)
+    {
+        self.tabBarController.selectedIndex = 0;
+        [((PBMainViewController *)self.tabBarController) highLightedFirstTabBarItem];
+        return;
+    }
+    [self resetScanView];
 }
 
 - (void)animate
@@ -92,6 +122,7 @@
     [self.view.layer addSublayer:self.bgView.layer];
     [self.promptView removeFromSuperview];
     self.line.hidden = NO;
+    self.backBtn.tag = 100;
     
 }
 
@@ -100,6 +131,7 @@
 
 - (void)showPromptView
 {
+    self.backBtn.tag = 200;
     NSString *nibName = [AppUtil getNibNameFromUIViewController:@"PBScanViewController"];
     self.promptView = [[[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil] lastObject];
     

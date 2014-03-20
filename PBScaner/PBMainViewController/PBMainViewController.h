@@ -12,4 +12,6 @@
 
 - (void)hideTabBar;
 - (void)revealTabBar;
+
+- (void)highLightedFirstTabBarItem;
 @end

@@ -46,7 +46,7 @@
     {
         self.navigationItem.rightBarButtonItem.enabled = YES;
     }
-    
+    DLog(@"arr = %@",_historyArray);
 }
 
 
@@ -131,7 +131,7 @@
 {
     NSDictionary *data = self.historyArray[indexPath.row];
     GoodDetailViewController *detailVC = [[GoodDetailViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"GoodDetailViewController"] bundle:nil];
-    detailVC.urlString = [data stringAttribute:@"url"];
+    detailVC.urlString = [[data stringAttribute:@"url"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     [self presentViewController:detailVC animated:YES completion:nil];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 

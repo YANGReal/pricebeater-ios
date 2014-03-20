@@ -128,7 +128,24 @@
    
 }
 
-    
+- (void)highLightedFirstTabBarItem
+{
+    for (UIView *view in self.myTabBar.subviews)
+    {
+        if ([view isKindOfClass:[UILabel class]])
+        {
+            UILabel *titleLabel = (UILabel *)view;
+            if (titleLabel.tag == 100)//第一个标签
+            {
+                titleLabel.textColor = WHITE_COLOR;
+            }
+            else//其他标签
+            {
+                titleLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1.0];
+            }
+        }
+    }
+}
     
 - (void)hideTabBar
 {
