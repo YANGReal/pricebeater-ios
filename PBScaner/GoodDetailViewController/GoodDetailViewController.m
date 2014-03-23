@@ -14,6 +14,7 @@
 @property (weak , nonatomic) IBOutlet UIWebView *webView;
 @property (weak , nonatomic) IBOutlet UIButton *preBtn;
 @property (weak , nonatomic) IBOutlet UIButton *nextBtn;
+@property (weak , nonatomic) IBOutlet UIView *bottomView;
 - (IBAction)back:(id)sender;
 
 - (IBAction)preBtnClicked:(id)sender;
@@ -41,6 +42,11 @@
     [self.webView loadRequest:request];
     self.nextBtn.enabled = NO;
     DLog(@"self.url = %@",_urlString);
+    if (self.type == 100)
+    {
+        self.bottomView.hidden = YES;
+        self.webView.height = [AppUtil getDeviceHeight] - 64;
+    }
     
 }
 

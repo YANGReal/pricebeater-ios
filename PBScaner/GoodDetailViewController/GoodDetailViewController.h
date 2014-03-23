@@ -14,4 +14,6 @@
 
 @property (copy , nonatomic) NSString *historyURL;
 
+@property (assign , nonatomic) int type;
+
 @end

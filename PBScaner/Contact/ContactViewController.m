@@ -9,7 +9,9 @@
 #import "ContactViewController.h"
 
 @interface ContactViewController ()<UIActionSheetDelegate,MFMailComposeViewControllerDelegate>
-
+{
+    IBOutlet UIImageView *raccoon;
+}
 - (IBAction)mailButtonClicked:(id)sender;
 
 - (IBAction)phoneButtonClicked:(id)sender;
@@ -32,24 +34,30 @@
 {
     [super viewDidLoad];
     [self customLeftBarButtonItem];
+    if (ISIP5)
+    {
+        raccoon.y = 370;
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)customLeftBarButtonItem
 {
-    UIView *view = [[UIView alloc] initWithFrame:RECT(0, 0, 30, 30)];
-    view.backgroundColor = [UIColor clearColor];
+    UIView *view = [[UIView alloc] initWithFrame:RECT(0, 0, 60, 30)];
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageFromMainBundleFile:@"back.png"]];
-    imgView.y = 5;
+    imgView.frame = RECT(0, 5, 11, 17);
     [view addSubview:imgView];
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = RECT(5, 0, 60, 30);
-    backBtn.titleLabel.font = [UIFont boldSystemFontOfSize:19];
+    backBtn.frame = RECT(5, -1, 60, 30);
+    // self.backBtn.backgroundColor = [UIColor yellowColor];
+    backBtn.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16];
     [backBtn setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
     [backBtn setTitle:@"Back" forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:backBtn];
+    
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+
 }
 
 

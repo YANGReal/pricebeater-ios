@@ -92,6 +92,7 @@
     NSString *url = [SEARCH_URL(text) stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     GoodDetailViewController *detailVC = [[GoodDetailViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"GoodDetailViewController"] bundle:nil];
     detailVC.urlString = url;
+    detailVC.type = 100;
     [self presentViewController:detailVC animated:YES completion:nil];
     return;
     [self showMBLoadingWithMessage:@"Loading"];
