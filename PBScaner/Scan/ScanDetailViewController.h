@@ -27,4 +27,5 @@ typedef enum
 @property (assign , nonatomic) id<ScanDetailViewControllerDelegate>delegate;
 
 @property (assign , nonatomic) ScanType scanType;
+@property (assign , nonatomic) int tag;
 @end

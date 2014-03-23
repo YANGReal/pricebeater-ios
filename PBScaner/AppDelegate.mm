@@ -27,9 +27,13 @@
     self.window.rootViewController = vc;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    
+    [UIColor colorWithHexString:@"#484848"];
     //yangrui
     return YES;
+    
+    
+    
+    
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

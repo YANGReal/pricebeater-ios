@@ -12,9 +12,12 @@
 #import "ScanDetailViewController.h"
 #import "GoodDetailViewController.h"
 @interface PBSearchViewController ()<UIGestureRecognizerDelegate,UITextFieldDelegate>
-@property (weak,nonatomic) IBOutlet UITextField *searchBar;
+@property (weak , nonatomic) IBOutlet UITextField *searchBar;
+@property (weak , nonatomic) IBOutlet UIButton *scanButton;
+@property (weak , nonatomic) IBOutlet UILabel *barLabel;
 - (IBAction)searchButtonCLicked:(id)sender;
 - (IBAction)scan:(id)sender;
+
 @end
 
 @implementation PBSearchViewController
@@ -46,6 +49,13 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
     [self.view addGestureRecognizer:tap];
+    
+    
+    if (ISIP5)
+    {
+        self.scanButton.y = 340;
+        self.barLabel.y = self.scanButton.y+self.scanButton.height+14;
+    }
     
 }
 
@@ -116,8 +126,9 @@
 - (IBAction)scan:(id)sender
 {
     ScanDetailViewController *detailVC = [[ScanDetailViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"ScanDetailViewController"] bundle:nil];
+    detailVC.tag = 100;
     [self.navigationController pushViewController:detailVC animated:YES];
-    [((PBMainViewController *)self.tabBarController) hideTabBar];
+    [((PBMainViewController *)self.tabBarController) hideTabBarWithType:100];
     //[self presentViewController:detailVC animated:YES completion:nil];
     return;
     PhoneMainViewController *phoneVC = [[PhoneMainViewController alloc] initWithNibName:@"PhoneMainViewController" bundle:nil];

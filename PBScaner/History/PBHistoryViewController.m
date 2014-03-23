@@ -71,6 +71,7 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:clearButton];
     
     self.tableView.height = [AppUtil getDeviceHeight];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 
 }
 

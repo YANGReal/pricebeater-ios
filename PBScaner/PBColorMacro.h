@@ -27,6 +27,7 @@
 #import "UIImageView+WebCache.h"
 #import "MBProgressHUD.h"
 #import "AttributedLabel.h"
+#import "UIColor+HexString.h"
 #pragma mark --定义常用宏
 
 
@@ -46,6 +47,7 @@
  几何尺寸
  *********************/
 #define ISIP5 ([UIScreen mainScreen].bounds.size.height == 568 ? YES : NO)
+
 #define IP5ORIP4FRAME [UIScreen mainScreen].bounds.size.height == 568 ? CGRectMake(0.0, 0.0, 320.0, 568.0) : CGRectMake(0.0, 0.0, 320.0, 480.0)
 
 #define POINT(x,y) CGPointMake(x,y)
@@ -95,19 +97,23 @@ alpha:((a) / 255.0f)]
 
 #pragma mark - Color
 
-#define COLOR_DEFAULT_GRAY      COLOR_RGB(0x49, 0x49, 0x49)
-#define COLOR_DEFAULT_YELLOW    COLOR_RGB(0xFF, 0xBD, 0x02)
+#define COLOR_DEFAULT_GRAY     [UIColor colorWithHexString:@"#484848"]
+
+#define COLOR_DEFAULT_YELLOW   [UIColor colorWithHexString:@"#FDBA2A"]
+
+
+
 
 #define COLOR_NAVIGATION_BAR    COLOR_DEFAULT_GRAY
 #define COLOR_NAVIGATION_TITLE  COLOR_DEFAULT_YELLOW
-#define COLOR_TOOL_BAR          COLOR_DEFAULT_GRAY
-#define COLOR_TAB_BAR           COLOR_DEFAULT_GRAY
 
 #define COLOR_LIGHT_GRAY [UIColor colorWithRed:120/255.0 green:120/255.0 blue:120/255.0 alpha:1]
 
 #define CLEAR_COLOR [UIColor clearColor]
 
 #define WHITE_COLOR [UIColor whiteColor]
+
+#define BG_COLOR [UIColor colorWithHexString:@"#FDBA2A"]
 
 
 #endif

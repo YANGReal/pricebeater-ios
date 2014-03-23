@@ -13,7 +13,7 @@
 @property (weak , nonatomic) IBOutlet AttributedLabel *descLabel;
 @property (weak , nonatomic) IBOutlet UILabel *priceLabel;
 @property (weak , nonatomic) IBOutlet UILabel *fromLabel;
-
+@property (weak , nonatomic) IBOutlet UIView *line;
 @end
 
 @implementation GoodsCell
@@ -35,6 +35,10 @@
     self.goodsImgView.clipsToBounds = YES;
     self.descLabel.numberOfLines = 0;
     self.descLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self.line.width = [AppUtil getDeviceWidth]+30;
+    self.line.backgroundColor = COLOR_RGB(192, 192, 192);
+    self.line.height = 0.5;
+
 }
 
 - (void)_initViews
@@ -73,7 +77,6 @@
     NSString *skuName = [[self.data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
     [self highlightedTagsWithSkuName:skuName];
    // CGPoint imgViewCenter = self.goodsImgView.center;
-    
 }
 
 
@@ -107,6 +110,9 @@
         self.priceLabel.y = self.fromLabel.y;
 
     }
+    
+    self.line.y = self.height-0.5;
+   
     //self.goodsImgView.center = CGPointMake(x, y);
    // DLog(@"height1>>>> = %f",self.height);
    

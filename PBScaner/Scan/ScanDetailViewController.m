@@ -11,9 +11,9 @@
 #import "PBScanTagView.h"
 #import "GoodsListViewController.h"
 #import "AppDelegate.h"
-@interface ScanDetailViewController ()<PBScannerViewDelegate,PBScanTagViewDelegate>
+@interface ScanDetailViewController ()<PBScannerViewDelegate,PBScanTagViewDelegate,GoodsListViewControllerDelagate>
 {
-
+    BOOL reset;
 }
 @property (strong , nonatomic) PBScannerView *readerView;
 @property (strong , nonatomic) PBScanTagView *scanTagView;
@@ -26,9 +26,14 @@
 @property (weak , nonatomic) IBOutlet UIButton *tagBtn;
 @property (weak, nonatomic) IBOutlet UILabel *barCodeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceTagLabel;
+
+@property (weak , nonatomic) IBOutlet UIView *promptView;
+
 - (IBAction)back:(id)sender;
 - (IBAction)scanBarCode:(id)sender;
 - (IBAction)scanPriceTag:(id)sender;
+
+
 
 @end
 
@@ -39,6 +44,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.title = @"Scan";
         
     }
     return self;
@@ -46,32 +52,39 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     [self customLeftBarButtonItem];
     // Do any additional setup after loading the view from its nib.
     [self setupUI];
+    [(PBMainViewController *)self.tabBarController hideTabBarWithType:self.tag];
 }
 
 
 - (void)setupUI
 {
-    if (self.scanType == barCodeType)
-    {
-        
-        [self performSelectorInBackground:@selector(startScanBarCode) withObject:nil];
-    }
-    else
-    {
-        [self performSelectorInBackground:@selector(startScanPriceTag) withObject:nil];
-    }
+    
+//    if (self.scanType == barCodeType)
+//    {
+//        
+//        [self performSelectorInBackground:@selector(startScanBarCode) withObject:nil];
+//    }
+//    else
+//    {
+//        [self performSelectorInBackground:@selector(startScanPriceTag) withObject:nil];
+//    }
     
     [self.view.layer addSublayer:self.topView.layer];
     [self.view.layer addSublayer:self.bottomView.layer];
     [self.view.layer addSublayer:self.label.layer];
     self.bgView.center = self.view.center;
     [self.view.layer addSublayer:self.bgView.layer];
+    self.promptView.layer.frame = self.promptView.bounds;
+    [self.view.layer addSublayer:self.promptView.layer];
+    [self.view addSubview:self.promptView];
+    self.promptView.hidden = YES;
     [UIView animateWithDuration:1.0 animations:^{
-        self.line.frame = RECT(0, self.bgView.height-20, 265, 1);
+        self.line.frame = RECT(0, self.bgView.height-20, 258, 1);
     } completion:^(BOOL finished) {
         [self animate];
     }];
@@ -80,33 +93,41 @@
     
 - (void)customLeftBarButtonItem
 {
-    UIView *view = [[UIView alloc] initWithFrame:RECT(0, 0, 30, 30)];
-    view.backgroundColor = [UIColor clearColor];
+    UIView *view = [[UIView alloc] initWithFrame:RECT(0, 0, 60, 30)];
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageFromMainBundleFile:@"back.png"]];
-    imgView.y = 5;
+    imgView.frame = RECT(0, 5, 11, 17);
     [view addSubview:imgView];
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = RECT(5, 0, 60, 30);
-    backBtn.titleLabel.font = [UIFont boldSystemFontOfSize:19];
+    backBtn.frame = RECT(5, -1, 60, 30);
+    // self.backBtn.backgroundColor = [UIColor yellowColor];
+    backBtn.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16];
     [backBtn setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
     [backBtn setTitle:@"Back" forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:backBtn];
+   // backBtn.tag  = 100;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
+
 }
     
     
 - (void)back:(id)sender
 {
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    [self.scanTagView free];
-    [self.scanTagView removeFromSuperview];
-    [self.readerView removeFromSuperview];
-    [((PBMainViewController *)self.tabBarController) revealTabBar];
-    if ([self.delegate respondsToSelector:@selector(backFromScanDetailViewController:)])
+    if (self.tag == 100)//push 进入的
     {
-        [self.delegate backFromScanDetailViewController:self];
+        [self.navigationController popViewControllerAnimated:YES];
+        //[((PBMainViewController *)self.tabBarController) revealTabBar];
+        if ([self.delegate respondsToSelector:@selector(backFromScanDetailViewController:)])
+        {
+            [self.delegate backFromScanDetailViewController:self];
+        }
+    }
+    else
+    {
+        
+        self.tabBarController.selectedIndex = 0;
+        [((PBMainViewController *)self.tabBarController) highLightedFirstTabBarItem];
+        
     }
 }
 
@@ -148,17 +169,19 @@
     [self.scanTagView startScan];
     self.barCodeLabel.textColor = [UIColor colorWithWhite:0.8 alpha:1];;
     self.priceTagLabel.textColor = WHITE_COLOR;
+    //if (pro)
+    [self hidePromptView];
 
 }
 
 - (void)animate
 {
     [UIView animateWithDuration:1.0 animations:^{
-        self.line.frame = RECT(0, 20, 265, 1);
+        self.line.frame = RECT(0, 20, 258, 1);
     } completion:^(BOOL finished) {
         
         [UIView animateWithDuration:1.0 animations:^{
-            self.line.frame = RECT(0, self.bgView.height-20, 265, 1);
+            self.line.frame = RECT(0, self.bgView.height-20, 258, 1);
         } completion:^(BOOL finished) {
             [self animate];
             
@@ -188,14 +211,22 @@
             DLog(@"obj = %@",data);
             if (data.count!=0)
             {
-
+                
                 GoodsListViewController *listVC = [[GoodsListViewController alloc] initWithNibName:@"GoodsListViewController" bundle:nil];
                 listVC.dataArray = data;
+                listVC.delagate = self;
                 [self.navigationController pushViewController:listVC animated:YES];
             }
             else
             {
-                [self showMBFailedWithMessage:@"no produect!"];
+                if (self.scanType == barCodeType)
+                {
+                    [self showPromptView];
+                }
+                else
+                {
+                    [self showMBFailedWithMessage:@"no produect!"];
+                }
             }
             [self hideMBLoading];
         }
@@ -206,7 +237,20 @@
     }];
 }
 
+#pragma mark - show prompt View
 
+- (void)showPromptView
+{
+    self.promptView.hidden = NO;
+    self.bottomView.hidden = YES;
+}
+
+- (void)hidePromptView
+{
+    self.promptView.hidden = YES;
+    self.bottomView.hidden = NO;
+
+}
 
 #pragma mark - IBAction Method
 
@@ -233,13 +277,26 @@
 
 - (void)pbScanTagViewDidOutputResult:(NSString *)result
 {
-    DLog(@"result = %@",result);
-   
+   // DLog(@"result = %@",result);
     
+    reset = YES;
     [self loadDataFromServerWithCode:result];
 }
 
 
+#pragma mark - View Will Disappear
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+   
+    [self.scanTagView removeFromSuperview];
+    [self.scanTagView free];
+    self.scanTagView = nil;
+    [self.readerView removeFromSuperview];
+    self.readerView = nil;
+    [((PBMainViewController *)self.tabBarController) revealTabBarWithType:self.tag];
+}
 
 
 #pragma mark -PBScannerViewDelegate
@@ -247,18 +304,47 @@
 - (void)pbScannerViewDidOutputResult:(NSString *)result
 {
     self.line.hidden = YES;
-    DLog(@"result = %@",result);
+   // DLog(@"result = %@",result);
+    reset = YES;
     [self showMBLoadingWithMessage:@"Loading"];
     [self loadDataFromServerWithCode:result];
 }
 
+#pragma mark -GoodsListViewControllerDelagate method
 
+- (void)backFromGoodsListViewController:(GoodsListViewController *)vc
+{   reset = YES;
+    [self.tabBarController performSelector:@selector(hideTabBarWithType:) withObject:@100];
+}
+
+#pragma mark - View will appear
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    //if (reset)
+    {
+        if (self.scanType == barCodeType)
+        {
+            [self.readerView removeFromSuperview];
+            self.readerView = nil;
+            [self performSelectorInBackground:@selector(startScanBarCode) withObject:nil];
+        }
+        else
+        {
+            [self.scanTagView removeFromSuperview];
+            [self.scanTagView free];
+            self.scanTagView = nil;
+            [self performSelectorInBackground:@selector(startScanPriceTag) withObject:nil];
+        }
+    }
+}
+
+#pragma mark - Memory management
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 

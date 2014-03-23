@@ -10,8 +10,10 @@
 
 @interface PBMainViewController : UITabBarController
 
-- (void)hideTabBar;
-- (void)revealTabBar;
+@property (assign , nonatomic) BOOL showTabBar;
+
+- (void)hideTabBarWithType:(int)type;
+- (void)revealTabBarWithType:(int)type;
 
 - (void)highLightedFirstTabBarItem;
 @end

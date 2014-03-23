@@ -94,9 +94,13 @@
            
         }
     }
-    
-   
-
 }
+
+- (void)removeFromSuperview
+{
+    [super removeFromSuperview];
+    [self stopScan];
+}
+
 
 @end

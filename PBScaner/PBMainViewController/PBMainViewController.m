@@ -11,7 +11,7 @@
 #import "PBScanViewController.h"
 #import "PBSettingViewController.h"
 #import "PBHistoryViewController.h"
-
+#import "ScanDetailViewController.h"
 @interface PBMainViewController ()
 @property (strong , nonatomic) UIView *myTabBar;
 @end
@@ -41,7 +41,8 @@
     PBSearchViewController *searchVC = [[PBSearchViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"PBSearchViewController"] bundle:nil];
     UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:searchVC];
     
-    PBScanViewController *scanVC = [[PBScanViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"PBScanViewController"] bundle:nil];
+    ScanDetailViewController *scanVC = [[ScanDetailViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"ScanDetailViewController"] bundle:nil];
+    scanVC.tag = 200;
     UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:scanVC];
     
     PBHistoryViewController *historyVC = [[PBHistoryViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"PBHistoryViewController"] bundle:nil];
@@ -61,7 +62,7 @@
     {
         iconSpace = 50;
       
-        titleSpace = 20;
+        titleSpace = 17;
     }
     else
     {
@@ -79,14 +80,14 @@
     CGFloat btnWidth = rect.size.width/4.0;
     for (int i = 0;i<4;i++)
     {
-        UIImageView *iconView = [[UIImageView alloc] initWithFrame:RECT(25+30*i+iconSpace*i, 5, 30,30)];
+        UIImageView *iconView = [[UIImageView alloc] initWithFrame:RECT(30+26*i+iconSpace*i, 5, 26,26)];
         iconView.image = [UIImage imageNamed:iconArr[i]];
         [self.myTabBar addSubview:iconView];
         
         UILabel *titleLabel = [[UILabel alloc] initWithFrame:RECT(10+60*i+titleSpace*i, 30, 60, 20)];
-        titleLabel.font = [UIFont systemFontOfSize:14];
+        titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:9];
         titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1];
+        titleLabel.textColor = [UIColor colorWithHexString:@"#B3B2B2"];
         if (i == 0)
         {
             titleLabel.textColor = WHITE_COLOR;
@@ -101,7 +102,7 @@
         [button addTarget:self action:@selector(tabBarTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self.myTabBar addSubview:button];
     }
-    UIView *line = [[UIView alloc] initWithFrame:RECT(0, 0, [AppUtil getDeviceWidth], 1)];
+    UIView *line = [[UIView alloc] initWithFrame:RECT(0, 0, [AppUtil getDeviceWidth],1)];
     line.backgroundColor = COLOR_LIGHT_GRAY;
     [self.myTabBar addSubview:line];
 }
@@ -120,12 +121,19 @@
             }
             else
             {
-                titleLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1.0];
+                titleLabel.textColor = [UIColor colorWithHexString:@"#B3B2B2"];
             }
         }
     }
+    
     self.selectedIndex = sender.tag-100;
-   
+   if (self.selectedIndex == 1)
+   {
+      if (self.showTabBar == NO)
+      {
+        [self hideTabBarWithType:200];   
+      }
+   }
 }
 
 - (void)highLightedFirstTabBarItem
@@ -141,27 +149,49 @@
             }
             else//其他标签
             {
-                titleLabel.textColor = [UIColor colorWithWhite:0.6 alpha:1.0];
+                titleLabel.textColor = [UIColor colorWithHexString:@"#B3B2B2"];
             }
         }
     }
 }
     
-- (void)hideTabBar
+- (void)hideTabBarWithType:(int)type
 {
-    [UIView animateWithDuration:0.3 animations:^{
-        
-        self.myTabBar.x = -self.myTabBar.width;
-    }];
+    if (type == 100)
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            self.myTabBar.x = -self.myTabBar.width;
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            self.myTabBar.y = self.myTabBar.y+49;
+        }];
+    }
+     // DLog(@"frame1 = %@",NSStringFromCGRect(_myTabBar.frame));
 }
     
-- (void)revealTabBar
+- (void)revealTabBarWithType:(int)type
 {
-    [UIView animateWithDuration:0.3 animations:^{
-        
-        self.myTabBar.x = 0;
-    }];
-
+   
+    if (type == 100)
+    {
+        self.myTabBar.y = [AppUtil getDeviceHeight] -49;
+        [UIView animateWithDuration:0.3 animations:^{
+            self.myTabBar.x = 0;
+        }];
+    }
+    else
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            self.myTabBar.y = [AppUtil getDeviceHeight]-49;
+        }];
+    }
+  //  DLog(@"frame2 = %@",NSStringFromCGRect(_myTabBar.frame));
 }
     
     

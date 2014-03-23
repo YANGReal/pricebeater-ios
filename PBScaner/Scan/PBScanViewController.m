@@ -68,14 +68,14 @@
 
 - (void)customLeftBarButtonItem
 {
-    UIView *view = [[UIView alloc] initWithFrame:RECT(0, 0, 30, 30)];
-    view.backgroundColor = [UIColor clearColor];
+    UIView *view = [[UIView alloc] initWithFrame:RECT(0, 0, 60, 30)];
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageFromMainBundleFile:@"back.png"]];
-    imgView.y = 5;
+    imgView.frame = RECT(0, 5, 11, 17);
     [view addSubview:imgView];
     self.backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.backBtn.frame = RECT(5, 0, 60, 30);
-    self.backBtn.titleLabel.font = [UIFont boldSystemFontOfSize:19];
+    self.backBtn.frame = RECT(5, -1, 60, 30);
+   // self.backBtn.backgroundColor = [UIColor yellowColor];
+    self.backBtn.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16];
     [self.backBtn setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
     [self.backBtn setTitle:@"Back" forState:UIControlStateNormal];
     [self.backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
@@ -157,7 +157,7 @@
     scanDetailVC.scanType = priceTagType;
     scanDetailVC.delegate = self;
     [self.navigationController pushViewController:scanDetailVC animated:YES];
-    [((PBMainViewController *)self.tabBarController) hideTabBar];
+   // [((PBMainViewController *)self.tabBarController) hideTabBar];
 }
 
 #pragma mark -ScanDetailViewController delegate method
