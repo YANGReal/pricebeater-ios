@@ -10,7 +10,10 @@
 #import "ShareView.h"
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
-@interface GoodDetailViewController ()<UIWebViewDelegate,ShareViewDelegate,MFMailComposeViewControllerDelegate,UIPrintInteractionControllerDelegate>
+#import <Pinterest/Pinterest.h>
+#define PINTEREST_APP_ID @"1436797"
+
+@interface GoodDetailViewController ()<UIWebViewDelegate,ShareViewDelegate,MFMailComposeViewControllerDelegate,UIPrintInteractionControllerDelegate,MFMessageComposeViewControllerDelegate>
 @property (weak , nonatomic) IBOutlet UIWebView *webView;
 @property (weak , nonatomic) IBOutlet UIButton *preBtn;
 @property (weak , nonatomic) IBOutlet UIButton *nextBtn;
@@ -61,12 +64,44 @@
 
 - (IBAction)preBtnClicked:(id)sender
 {
-    [self.webView goBack];
+    if (self.currentIndex <= 0)
+    {
+        self.currentIndex = 0;
+    }
+    
+    NSDictionary *data = self.dataArray[self.currentIndex];
+    NSString *hash = [data stringAttribute:@"urlhash"];
+    self.urlString = PRODUCT_DETAIL_URL(hash);
+    self.historyURL = PRODUCT_HISTORY_URL(hash);
+    [self webViewLoadURL:self.urlString];
+
+    
+    self.currentIndex --;
+    
 }
 - (IBAction)nextBtnClicked:(id)sender
 {
-    [self.webView goForward];
+    if (self.currentIndex>=self.dataArray.count)
+    {
+        self.currentIndex = self.dataArray.count -1;
+    }
+    
+    NSDictionary *data = self.dataArray[self.currentIndex];
+    NSString *hash = [data stringAttribute:@"urlhash"];
+    self.urlString = PRODUCT_DETAIL_URL(hash);
+    self.historyURL = PRODUCT_HISTORY_URL(hash);
+    [self webViewLoadURL:self.urlString];
+    self.currentIndex ++;
 }
+
+- (void)webViewLoadURL:(NSString *)urlString
+{
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:request];
+}
+
+
 
 - (IBAction)historyBtnClicked:(id)sender
 {
@@ -106,23 +141,22 @@
 
 - (void)check
 {
-    if ([self.webView canGoBack])
+   if (self.currentIndex == 0)
+   {
+       self.preBtn.enabled = NO;
+   }
+    else
     {
         self.preBtn.enabled = YES;
     }
-    else
+    if (self.currentIndex == self.dataArray.count-1)
     {
-        self.preBtn.enabled = NO;
+        self.nextBtn.enabled = NO;
     }
-    if([self.webView canGoForward])
+    else
     {
         self.nextBtn.enabled = YES;
     }
-    else
-    {
-        self.nextBtn = NO;
-    }
-
 }
 
 
@@ -175,7 +209,16 @@
             [self sendMail];
         }
             break;
-        default:
+        case 6:
+        {
+            [self sharToPintrest];
+        }
+            break;
+            
+        case 7:
+        {
+            [self sendSMS];
+        }
             break;
     }
 }
@@ -331,6 +374,49 @@
 		
 	}
 
+}
+
+#pragma mark -发送短信
+
+- (void)sendSMS
+{
+    if([MFMessageComposeViewController canSendText])
+    {
+        MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc] init];
+        //controller.recipients = [NSArray arrayWithObject:@"10010"];
+        controller.body = self.urlString;
+        controller.messageComposeDelegate = self;
+        [self presentViewController:controller animated:YES completion:nil];
+        [[[[controller viewControllers] lastObject] navigationItem] setTitle:@"SMS"];//修改短信界面标题
+    }
+    else
+    {
+        [AppUtil showAlertWithMessage:@"Sorry,your device can not send sms!"];
+    }
+}
+
+- (void)sharToPintrest
+{
+    Pinterest *pin = [[Pinterest alloc] initWithClientId:PINTEREST_APP_ID];
+    NSDictionary *dict = self.dataArray[self.currentIndex];
+    NSString *imgurl = [dict stringAttribute:@"img"];
+    NSURL *imgURL = [NSURL URLWithString:imgurl];
+    NSURL *sourceURL = [NSURL URLWithString:self.urlString];
+    
+    NSString *skuName = [[dict stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
+    NSArray *spans = [skuName componentsMatchedByRegex:@"<[^>]*>"];//找到<span标签>
+    for (NSString *span in spans)
+    {
+        skuName = [skuName stringByReplacingOccurrencesOfString:span withString:@""];//将<span>去掉
+    }
+    [pin createPinWithImageURL:imgURL sourceURL:sourceURL description:skuName];
+}
+
+#pragma mark - MFMessageComposeViewController Delegate method
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result;
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - MFMailComposeViewControllerDelegate method

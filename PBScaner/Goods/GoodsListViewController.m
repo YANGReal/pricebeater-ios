@@ -118,9 +118,11 @@
     NSString *hash = [data stringAttribute:@"urlhash"];
     detailVC.urlString = PRODUCT_DETAIL_URL(hash);
     detailVC.historyURL = PRODUCT_HISTORY_URL(hash);
+    detailVC.dataArray = self.dataArray;
+    detailVC.currentIndex = indexPath.row;
     [self presentViewController:detailVC animated:YES completion:nil];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self storeHistoryData:data];
 }
 

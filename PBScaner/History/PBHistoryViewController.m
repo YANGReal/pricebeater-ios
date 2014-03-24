@@ -62,13 +62,17 @@
 {
     //self.navigationController.navigationItem.rightBarButtonItem
     self.title = @"History";
+    UIView *view = [[UIView alloc] initWithFrame:RECT(0, 0, 100, 30)];
+    //view.backgroundColor = COLOR_DEFAULT_YELLOW;
+    
     UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    clearButton.frame = RECT(0, 0, 100, 30);
+    clearButton.frame = RECT(20, 0, 100, 30);
     [clearButton setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
-    [clearButton setTitle:@"Clear All" forState:UIControlStateNormal];
-    clearButton.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+    [clearButton setTitle:@"Clear all" forState:UIControlStateNormal];
+    clearButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16];
     [clearButton addTarget:self action:@selector(clearAll) forControlEvents:UIControlEventTouchUpInside];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:clearButton];
+    [view addSubview:clearButton];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:view];
     
     self.tableView.height = [AppUtil getDeviceHeight];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

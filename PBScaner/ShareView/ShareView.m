@@ -29,7 +29,13 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    [self.cancelBtn setupBorder:COLOR_DEFAULT_GRAY cornerRadius:5.0];
+
+    self.cancelBtn.layer.cornerRadius = 9.0;
+    self.cancelBtn.layer.borderWidth = 2.0;
+    self.cancelBtn.layer.borderColor = COLOR_DEFAULT_GRAY.CGColor;
+    self.cancelBtn.layer.masksToBounds = YES;
+
+    
     [self setupBorder:CLEAR_COLOR cornerRadius:5.0];
 }
 

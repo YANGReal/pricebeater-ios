@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LocationViewController : PBBaseViewController
+@protocol LocationViewControllerDelegate <NSObject>
 
+@optional
+
+- (void)backFromLocationViewControllerWithLocation:(NSString *)location;
+
+@end
+
+@interface LocationViewController : PBBaseViewController
+@property (assign , nonatomic) id<LocationViewControllerDelegate>delegate;
 @end

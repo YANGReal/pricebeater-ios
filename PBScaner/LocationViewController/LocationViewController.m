@@ -81,18 +81,25 @@
 {
     UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     doneBtn.frame = RECT(0, 0, 60, 30);
-    doneBtn.titleLabel.font = [UIFont boldSystemFontOfSize:19];
+    doneBtn.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16];
     [doneBtn setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
     [doneBtn setTitle:@"Done" forState:UIControlStateNormal];
     [doneBtn addTarget:self action:@selector(done:) forControlEvents:UIControlEventTouchUpInside];
    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:doneBtn];
-
     
 }
 
 - (void)back:(id)sender
 {
+    if (textField.text.length !=0 )
+    {
+        if ([self.delegate respondsToSelector:@selector(backFromLocationViewControllerWithLocation:)])
+        {
+            [self.delegate backFromLocationViewControllerWithLocation:textField.text];
+        }
+
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

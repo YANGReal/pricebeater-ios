@@ -16,4 +16,8 @@
 
 @property (assign , nonatomic) int type;
 
+@property (strong , nonatomic) NSArray *dataArray;
+
+@property (assign , nonatomic) int currentIndex;
+
 @end

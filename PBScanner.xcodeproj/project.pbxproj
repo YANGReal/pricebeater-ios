@@ -27,6 +27,20 @@
 		6E1E222318C3844200B2C3FC /* PBSearchViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E222018C3844200B2C3FC /* PBSearchViewController.mm */; };
 		6E1E222418C3844200B2C3FC /* PBSearchViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1E222118C3844200B2C3FC /* PBSearchViewController_iPad.xib */; };
 		6E1E222518C3844200B2C3FC /* PBSearchViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1E222218C3844200B2C3FC /* PBSearchViewController_iPhone.xib */; };
+		6E1EC7F918E051C8001DCB75 /* icon_contact_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC7EF18E051C8001DCB75 /* icon_contact_add.png */; };
+		6E1EC7FA18E051C8001DCB75 /* icon_contact_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC7F018E051C8001DCB75 /* icon_contact_add@2x.png */; };
+		6E1EC7FB18E051C8001DCB75 /* icon_contact_mail.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC7F118E051C8001DCB75 /* icon_contact_mail.png */; };
+		6E1EC7FC18E051C8001DCB75 /* icon_contact_mail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC7F218E051C8001DCB75 /* icon_contact_mail@2x.png */; };
+		6E1EC7FD18E051C8001DCB75 /* icon_contact_phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC7F318E051C8001DCB75 /* icon_contact_phone.png */; };
+		6E1EC7FE18E051C8001DCB75 /* icon_contact_phone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC7F418E051C8001DCB75 /* icon_contact_phone@2x.png */; };
+		6E1EC7FF18E051C8001DCB75 /* icon_pinetest.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC7F518E051C8001DCB75 /* icon_pinetest.png */; };
+		6E1EC80018E051C8001DCB75 /* icon_pinetest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC7F618E051C8001DCB75 /* icon_pinetest@2x.png */; };
+		6E1EC80118E051C8001DCB75 /* icon_sms.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC7F718E051C8001DCB75 /* icon_sms.png */; };
+		6E1EC80218E051C8001DCB75 /* icon_sms@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC7F818E051C8001DCB75 /* icon_sms@2x.png */; };
+		6E1EC80718E0618D001DCB75 /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E1EC80418E0618D001DCB75 /* Pinterest.framework */; };
+		6E1EC80818E0618D001DCB75 /* PinterestSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC80618E0618D001DCB75 /* PinterestSDKResources.bundle */; };
+		6E1EC80B18E072FE001DCB75 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC80918E072FE001DCB75 /* iTunesArtwork */; };
+		6E1EC80C18E072FE001DCB75 /* iTunesArtwork@2x in Resources */ = {isa = PBXBuildFile; fileRef = 6E1EC80A18E072FE001DCB75 /* iTunesArtwork@2x */; };
 		6E25A6DB18CC445000E137B3 /* PBScannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E25A6DA18CC445000E137B3 /* PBScannerView.m */; };
 		6E25A6E018CC67E800E137B3 /* ScanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E25A6DE18CC67E800E137B3 /* ScanDetailViewController.m */; };
 		6E25A6E118CC67E800E137B3 /* ScanDetailViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E25A6DF18CC67E800E137B3 /* ScanDetailViewController_iPhone.xib */; };
@@ -228,6 +242,20 @@
 		6E1E222018C3844200B2C3FC /* PBSearchViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PBSearchViewController.mm; sourceTree = "<group>"; };
 		6E1E222118C3844200B2C3FC /* PBSearchViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBSearchViewController_iPad.xib; sourceTree = "<group>"; };
 		6E1E222218C3844200B2C3FC /* PBSearchViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBSearchViewController_iPhone.xib; sourceTree = "<group>"; };
+		6E1EC7EF18E051C8001DCB75 /* icon_contact_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_contact_add.png; sourceTree = "<group>"; };
+		6E1EC7F018E051C8001DCB75 /* icon_contact_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_contact_add@2x.png"; sourceTree = "<group>"; };
+		6E1EC7F118E051C8001DCB75 /* icon_contact_mail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_contact_mail.png; sourceTree = "<group>"; };
+		6E1EC7F218E051C8001DCB75 /* icon_contact_mail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_contact_mail@2x.png"; sourceTree = "<group>"; };
+		6E1EC7F318E051C8001DCB75 /* icon_contact_phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_contact_phone.png; sourceTree = "<group>"; };
+		6E1EC7F418E051C8001DCB75 /* icon_contact_phone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_contact_phone@2x.png"; sourceTree = "<group>"; };
+		6E1EC7F518E051C8001DCB75 /* icon_pinetest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pinetest.png; sourceTree = "<group>"; };
+		6E1EC7F618E051C8001DCB75 /* icon_pinetest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_pinetest@2x.png"; sourceTree = "<group>"; };
+		6E1EC7F718E051C8001DCB75 /* icon_sms.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_sms.png; sourceTree = "<group>"; };
+		6E1EC7F818E051C8001DCB75 /* icon_sms@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_sms@2x.png"; sourceTree = "<group>"; };
+		6E1EC80418E0618D001DCB75 /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
+		6E1EC80618E0618D001DCB75 /* PinterestSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PinterestSDKResources.bundle; sourceTree = "<group>"; };
+		6E1EC80918E072FE001DCB75 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
+		6E1EC80A18E072FE001DCB75 /* iTunesArtwork@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "iTunesArtwork@2x"; sourceTree = "<group>"; };
 		6E25A6D918CC445000E137B3 /* PBScannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBScannerView.h; path = PBScan/PBScannerView.h; sourceTree = "<group>"; };
 		6E25A6DA18CC445000E137B3 /* PBScannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PBScannerView.m; path = PBScan/PBScannerView.m; sourceTree = "<group>"; };
 		6E25A6DD18CC67E800E137B3 /* ScanDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScanDetailViewController.h; path = Scan/ScanDetailViewController.h; sourceTree = "<group>"; };
@@ -603,6 +631,7 @@
 				6E2B038E18C0C3740073D23B /* QuartzCore.framework in Frameworks */,
 				785A9A0F18A586EB004CE803 /* liblept.a in Frameworks */,
 				785A9A1018A586EB004CE803 /* libtesseract_all.a in Frameworks */,
+				6E1EC80718E0618D001DCB75 /* Pinterest.framework in Frameworks */,
 				785A98D018A576D6004CE803 /* libstdc++.6.0.9.dylib in Frameworks */,
 				785A989A18A57695004CE803 /* CoreGraphics.framework in Frameworks */,
 				785A989C18A57695004CE803 /* UIKit.framework in Frameworks */,
@@ -715,6 +744,23 @@
 				6E1E222218C3844200B2C3FC /* PBSearchViewController_iPhone.xib */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		6E1EC80318E0618D001DCB75 /* Pinterest.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				6E1EC80418E0618D001DCB75 /* Pinterest.framework */,
+				6E1EC80518E0618D001DCB75 /* Resources */,
+			);
+			path = Pinterest.embeddedframework;
+			sourceTree = "<group>";
+		};
+		6E1EC80518E0618D001DCB75 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6E1EC80618E0618D001DCB75 /* PinterestSDKResources.bundle */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		6E25A6DC18CC445A00E137B3 /* PBScannerView */ = {
@@ -890,6 +936,16 @@
 		766749E918B4FB8A000B268F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6E1EC7EF18E051C8001DCB75 /* icon_contact_add.png */,
+				6E1EC7F018E051C8001DCB75 /* icon_contact_add@2x.png */,
+				6E1EC7F118E051C8001DCB75 /* icon_contact_mail.png */,
+				6E1EC7F218E051C8001DCB75 /* icon_contact_mail@2x.png */,
+				6E1EC7F318E051C8001DCB75 /* icon_contact_phone.png */,
+				6E1EC7F418E051C8001DCB75 /* icon_contact_phone@2x.png */,
+				6E1EC7F518E051C8001DCB75 /* icon_pinetest.png */,
+				6E1EC7F618E051C8001DCB75 /* icon_pinetest@2x.png */,
+				6E1EC7F718E051C8001DCB75 /* icon_sms.png */,
+				6E1EC7F818E051C8001DCB75 /* icon_sms@2x.png */,
 				6E25EEB318C74E11002E32CE /* corner2.png */,
 				6E25EEB418C74E11002E32CE /* corner1.png */,
 				6E25EEB718C74F3E002E32CE /* corner4.png */,
@@ -999,6 +1055,7 @@
 		766749F018B4FBD1000B268F /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				6E1EC80318E0618D001DCB75 /* Pinterest.embeddedframework */,
 				1496BF8118D6D59C0094ED1B /* MBProgressHUD */,
 				76674A3F18B50B23000B268F /* SDWebImage */,
 				76674A2218B50B17000B268F /* AFNetworking */,
@@ -1100,6 +1157,8 @@
 		785A988B18A57695004CE803 = {
 			isa = PBXGroup;
 			children = (
+				6E1EC80918E072FE001DCB75 /* iTunesArtwork */,
+				6E1EC80A18E072FE001DCB75 /* iTunesArtwork@2x */,
 				766749F018B4FBD1000B268F /* Vendor */,
 				785A989D18A57695004CE803 /* PBScanner */,
 				766749EE18B4FB99000B268F /* Resources */,
@@ -1443,7 +1502,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7669C8A618B84CB600C7ECF1 /* raccoon_about@2x.png in Resources */,
+				6E1EC80218E051C8001DCB75 /* icon_sms@2x.png in Resources */,
 				7669C8B818B84CB600C7ECF1 /* status_bar_next@2x.png in Resources */,
+				6E1EC80118E051C8001DCB75 /* icon_sms.png in Resources */,
 				7669C89918B84CB600C7ECF1 /* icon_share.png in Resources */,
 				7669C8A318B84CB600C7ECF1 /* raccoon_404.png in Resources */,
 				7669C8AA18B84CB600C7ECF1 /* scan_barcode_big@2x.png in Resources */,
@@ -1457,27 +1518,37 @@
 				7669C88C18B84CB600C7ECF1 /* icon_location@2x.png in Resources */,
 				7669C89A18B84CB600C7ECF1 /* icon_share@2x.png in Resources */,
 				7669C87A18B84CB600C7ECF1 /* copied_successfully@2x.png in Resources */,
+				6E1EC7FD18E051C8001DCB75 /* icon_contact_phone.png in Resources */,
 				7669C8A218B84CB600C7ECF1 /* maple@2x.png in Resources */,
 				7669C8BA18B84CB600C7ECF1 /* status_bar_previous@2x.png in Resources */,
 				6E25EEB518C74E11002E32CE /* corner2.png in Resources */,
 				6E1E222518C3844200B2C3FC /* PBSearchViewController_iPhone.xib in Resources */,
 				6E1E221818C3838F00B2C3FC /* PBScanViewController_iPad.xib in Resources */,
+				6E1EC80018E051C8001DCB75 /* icon_pinetest@2x.png in Resources */,
 				7669C88518B84CB600C7ECF1 /* icon_hidden.png in Resources */,
 				7669C8B618B84CB600C7ECF1 /* search_button@2x.png in Resources */,
 				785A9A0618A57C94004CE803 /* PhoneMainViewController.xib in Resources */,
+				6E1EC7FF18E051C8001DCB75 /* icon_pinetest.png in Resources */,
 				6E296E7B18C4A734003E6A6E /* AboutViewController_iPhone.xib in Resources */,
 				7669C8AE18B84CB600C7ECF1 /* scan_corner@2x.png in Resources */,
 				7669C8B418B84CB600C7ECF1 /* search_box@2x.png in Resources */,
+				6E1EC7FA18E051C8001DCB75 /* icon_contact_add@2x.png in Resources */,
+				6E1EC7FC18E051C8001DCB75 /* icon_contact_mail@2x.png in Resources */,
 				6E25EEC518C75D7E002E32CE /* GoodsCell.xib in Resources */,
 				7669C8A118B84CB600C7ECF1 /* maple.png in Resources */,
 				7669C88118B84CB600C7ECF1 /* icon_facebook.png in Resources */,
 				6E1E21FF18C3816B00B2C3FC /* PBSettingViewController_iPad.xib in Resources */,
 				7669C8AF18B84CB600C7ECF1 /* scan_label_big.png in Resources */,
+				6E1EC80B18E072FE001DCB75 /* iTunesArtwork in Resources */,
 				7669C89118B84CB600C7ECF1 /* icon_refresh.png in Resources */,
 				7669C89218B84CB600C7ECF1 /* icon_refresh@2x.png in Resources */,
 				6E2A335818C4C2B90073F6AF /* ContactViewController_iPad.xib in Resources */,
+				6E1EC7FE18E051C8001DCB75 /* icon_contact_phone@2x.png in Resources */,
+				6E1EC7FB18E051C8001DCB75 /* icon_contact_mail.png in Resources */,
 				7669C8A918B84CB600C7ECF1 /* scan_barcode_big.png in Resources */,
+				6E1EC80C18E072FE001DCB75 /* iTunesArtwork@2x in Resources */,
 				6E1E221118C3831D00B2C3FC /* PBHistoryViewController_iPhone.xib in Resources */,
+				6E1EC7F918E051C8001DCB75 /* icon_contact_add.png in Resources */,
 				7669C88A18B84CB600C7ECF1 /* icon_history@2x.png in Resources */,
 				7669C88F18B84CB600C7ECF1 /* icon_printer.png in Resources */,
 				6E1E222418C3844200B2C3FC /* PBSearchViewController_iPad.xib in Resources */,
@@ -1485,6 +1556,7 @@
 				6E25EEB618C74E11002E32CE /* corner1.png in Resources */,
 				7669C8AB18B84CB600C7ECF1 /* scan_barcode_small.png in Resources */,
 				6E1E220118C3816B00B2C3FC /* SettingConfig.plist in Resources */,
+				6E1EC80818E0618D001DCB75 /* PinterestSDKResources.bundle in Resources */,
 				6E2A336018C4C5390073F6AF /* TermViewController_iPad.xib in Resources */,
 				7669C88218B84CB600C7ECF1 /* icon_facebook@2x.png in Resources */,
 				7669C88318B84CB600C7ECF1 /* icon_filter.png in Resources */,
@@ -1733,6 +1805,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Lin Zeng (U344YU3QDC)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Lin Zeng (U344YU3QDC)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pinterest.embeddedframework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PBScaner/PBScanner-Prefix.pch";
 				INFOPLIST_FILE = "PBScaner/PBScanner-Info.plist";
@@ -1757,6 +1833,10 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pinterest.embeddedframework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PBScaner/PBScanner-Prefix.pch";
 				INFOPLIST_FILE = "PBScaner/PBScanner-Info.plist";
