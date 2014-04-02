@@ -123,8 +123,9 @@
     [self.promptView removeFromSuperview];
     self.line.hidden = NO;
     self.backBtn.tag = 100;
-    
 }
+
+
 
 
 #pragma mark -进入商品404界面

@@ -47,9 +47,13 @@
     {
         [self.delegate shareView:self didSelectAtIndex:(int)sender.tag];
     }
+    if (sender.tag == 100)
+    {
+        [self cancelBtnClicked:nil];
+    }
 }
 
-- (IBAction)cancelBtnClicked:(id)sender
+- (void)cancelBtnClicked:(id)sender
 {
     [UIView animateWithDuration:0.3 animations:^{
         self.y = self.superview.height+10;

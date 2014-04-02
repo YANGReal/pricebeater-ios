@@ -76,7 +76,6 @@
     self.priceLabel.text = [NSString stringWithFormat:@"$ %@",price];
     NSString *skuName = [[self.data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
     [self highlightedTagsWithSkuName:skuName];
-   // CGPoint imgViewCenter = self.goodsImgView.center;
 }
 
 
@@ -110,13 +109,7 @@
         self.priceLabel.y = self.fromLabel.y;
 
     }
-    
     self.line.y = self.height-0.5;
-   
-    //self.goodsImgView.center = CGPointMake(x, y);
-   // DLog(@"height1>>>> = %f",self.height);
-   
-
 }
 
 

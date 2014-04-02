@@ -84,7 +84,7 @@
     [self.view addSubview:self.promptView];
     self.promptView.hidden = YES;
     [UIView animateWithDuration:1.0 animations:^{
-        self.line.frame = RECT(0, self.bgView.height-20, 258, 1);
+        self.line.frame = RECT(2, self.bgView.height-20, 258, 1);
     } completion:^(BOOL finished) {
         [self animate];
     }];
@@ -149,6 +149,8 @@
     self.line.hidden = NO;
     self.barCodeLabel.textColor = WHITE_COLOR;
     self.priceTagLabel.textColor = [UIColor colorWithWhite:0.8 alpha:1];
+    
+    DLog(@"barCode");
 
 }
 
@@ -171,17 +173,22 @@
     self.priceTagLabel.textColor = WHITE_COLOR;
     //if (pro)
     [self hidePromptView];
+    
+    
+    DLog(@"priceTag");
 
 }
 
 - (void)animate
 {
     [UIView animateWithDuration:1.0 animations:^{
-        self.line.frame = RECT(0, 20, 258, 1);
+       // self.line.frame = RECT(2, 20, 258, 1);
+        self.line.y = 20;
     } completion:^(BOOL finished) {
         
         [UIView animateWithDuration:1.0 animations:^{
-            self.line.frame = RECT(0, self.bgView.height-20, 258, 1);
+            //self.line.frame = RECT(2, self.bgView.height-20, 258, 1);
+            self.line.y = self.bgView.height -20;
         } completion:^(BOOL finished) {
             [self animate];
             

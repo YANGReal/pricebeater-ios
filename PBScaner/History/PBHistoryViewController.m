@@ -37,7 +37,7 @@
     {
         self.historyArray = [NSMutableArray array];
     }
-    [self.tableView reloadData];
+    //[self.tableView reloadData];
     if (self.historyArray.count == 0)
     {
         self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -46,6 +46,9 @@
     {
         self.navigationItem.rightBarButtonItem.enabled = YES;
     }
+    
+    [self.tableView reloadData];
+    
     DLog(@"arr = %@",_historyArray);
 }
 
@@ -112,6 +115,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
+    GoodsCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"GoodsCell" owner:self options:nil] lastObject];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.data = self.historyArray[indexPath.row];
+    return cell;
+    /*
     static NSString *identifier = @"cell";
     GoodsCell *cell = (GoodsCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell)
@@ -119,9 +129,9 @@
         cell = [[[NSBundle mainBundle] loadNibNamed:@"GoodsCell" owner:self options:nil] lastObject];
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
     cell.data = self.historyArray[indexPath.row];
     return cell;
+     */
 }
 
 
@@ -134,9 +144,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     NSDictionary *data = self.historyArray[indexPath.row];
     GoodDetailViewController *detailVC = [[GoodDetailViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"GoodDetailViewController"] bundle:nil];
-    detailVC.urlString = [[data stringAttribute:@"url"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *hash = [data stringAttribute:@"urlhash"];
+    detailVC.urlString = PRODUCT_DETAIL_URL(hash);
+    detailVC.historyURL = PRODUCT_HISTORY_URL(hash);
+    detailVC.dataArray = self.historyArray;
+    detailVC.currentIndex = (int)indexPath.row;
     [self presentViewController:detailVC animated:YES completion:nil];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 

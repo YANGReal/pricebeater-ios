@@ -9,6 +9,7 @@
                 <outlet property="bottomView" destination="tnQ-FW-twj" id="BVm-iI-KgR"/>
                 <outlet property="nextBtn" destination="kCS-XN-fY5" id="oju-aI-aqQ"/>
                 <outlet property="preBtn" destination="BuJ-J7-L1Z" id="r41-Ea-jug"/>
+                <outlet property="shareBtn" destination="QHl-l1-6pv" id="7q9-tg-50s"/>
                 <outlet property="view" destination="1" id="UmN-Yv-RPS"/>
                 <outlet property="webView" destination="uqe-Aq-Ybu" id="rRO-gl-89e"/>
             </connections>

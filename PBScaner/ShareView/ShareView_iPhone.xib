@@ -64,7 +64,7 @@
                         <action selector="iconBtnClicked:" destination="1" eventType="touchUpInside" id="QoU-wL-qtR"/>
                     </connections>
                 </button>
-                <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JN4-kd-H1k">
+                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JN4-kd-H1k">
                     <rect key="frame" x="15" y="188" width="290" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
@@ -73,7 +73,7 @@
                         <color key="titleShadowColor" red="0.35686274509803922" green="0.35686274509803922" blue="0.35686274509803922" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
-                        <action selector="cancelBtnClicked:" destination="1" eventType="touchUpInside" id="EeM-rp-jZy"/>
+                        <action selector="iconBtnClicked:" destination="1" eventType="touchUpInside" id="JEd-n3-26Q"/>
                     </connections>
                 </button>
                 <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xTl-kf-Bhc">

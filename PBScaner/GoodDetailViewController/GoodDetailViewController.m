@@ -18,6 +18,8 @@
 @property (weak , nonatomic) IBOutlet UIButton *preBtn;
 @property (weak , nonatomic) IBOutlet UIButton *nextBtn;
 @property (weak , nonatomic) IBOutlet UIView *bottomView;
+@property (weak , nonatomic) IBOutlet UIButton *shareBtn;
+
 - (IBAction)back:(id)sender;
 
 - (IBAction)preBtnClicked:(id)sender;
@@ -124,6 +126,7 @@
     else
     {   shareView.x = self.view.width/2.0-shareView.width/2.0;
         shareView.y = self.view.height+10;
+        self.shareBtn.userInteractionEnabled = NO;
     }
    // shareView.y = self.view.height+10;
     [self.view addSubview:shareView];
@@ -183,6 +186,7 @@
 
 - (void)shareView:(ShareView *)shareView didSelectAtIndex:(int)index
 {
+    
     switch (index) {
         case 0:
         {
@@ -219,6 +223,9 @@
         {
             [self sendSMS];
         }
+            break;
+        default:
+            self.shareBtn.userInteractionEnabled = YES;
             break;
     }
 }
