@@ -63,17 +63,6 @@
 
 - (void)setupUI
 {
-    
-//    if (self.scanType == barCodeType)
-//    {
-//        
-//        [self performSelectorInBackground:@selector(startScanBarCode) withObject:nil];
-//    }
-//    else
-//    {
-//        [self performSelectorInBackground:@selector(startScanPriceTag) withObject:nil];
-//    }
-    
     [self.view.layer addSublayer:self.topView.layer];
     [self.view.layer addSublayer:self.bottomView.layer];
     [self.view.layer addSublayer:self.label.layer];
@@ -88,6 +77,8 @@
     } completion:^(BOOL finished) {
         [self animate];
     }];
+    
+    
 }
     
     
@@ -149,9 +140,6 @@
     self.line.hidden = NO;
     self.barCodeLabel.textColor = WHITE_COLOR;
     self.priceTagLabel.textColor = [UIColor colorWithWhite:0.8 alpha:1];
-    
-    DLog(@"barCode");
-
 }
 
 - (void)startScanPriceTag
@@ -173,10 +161,6 @@
     self.priceTagLabel.textColor = WHITE_COLOR;
     //if (pro)
     [self hidePromptView];
-    
-    
-    DLog(@"priceTag");
-
 }
 
 - (void)animate
