@@ -3,7 +3,7 @@
 //  PBScanner
 //
 //  Created by YANGReal on 14-3-9.
-//  Copyright (c) 2014年 Huo Ju. All rights reserved.
+//  Copyright (c) 2014年 YANGReal. All rights reserved.
 //
 
 #import "PBScannerView.h"
@@ -46,7 +46,7 @@
     }
     else
     {
-        NSLog(@"Error: %@", error);
+        NSLog(@"Error: %@", error.description);
     }
     
     AVCaptureMetadataOutput *output = [[AVCaptureMetadataOutput alloc] init];
@@ -85,13 +85,11 @@
         if ([metadata.type isEqualToString:AVMetadataObjectTypeEAN13Code])
         {
             code = [(AVMetadataMachineReadableCodeObject *)metadata stringValue];
-           // NSLog(@"Code: %@", code);
              [self stopScan];
             if ([self.delegate respondsToSelector:@selector(pbScannerViewDidOutputResult:)])
             {
                 [self.delegate pbScannerViewDidOutputResult:code];
             }
-           
         }
     }
 }

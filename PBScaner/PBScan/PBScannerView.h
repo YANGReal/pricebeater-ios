@@ -3,7 +3,7 @@
 //  PBScanner
 //
 //  Created by YANGReal on 14-3-9.
-//  Copyright (c) 2014年 Huo Ju. All rights reserved.
+//  Copyright (c) 2014年 YANGReal. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
