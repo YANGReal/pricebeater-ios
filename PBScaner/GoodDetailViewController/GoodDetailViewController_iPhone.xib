@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoodDetailViewController">
             <connections>
                 <outlet property="bottomView" destination="miH-bC-bza" id="R7y-Jt-TMV"/>
+                <outlet property="historyBtn" destination="k42-Vz-za5" id="3gK-PC-V5h"/>
                 <outlet property="nextBtn" destination="eTO-XG-ieG" id="Egp-yc-Yb0"/>
                 <outlet property="preBtn" destination="I9m-3n-Rmh" id="szc-DD-dlw"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -27,11 +28,11 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back.png" id="gWI-xI-5eZ">
-                            <rect key="frame" x="9" y="25" width="11" height="17"/>
+                            <rect key="frame" x="9" y="28" width="11" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6An-AL-n7i">
-                            <rect key="frame" x="21" y="16" width="46" height="35"/>
+                            <rect key="frame" x="21" y="19" width="46" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <state key="normal" title="Back">

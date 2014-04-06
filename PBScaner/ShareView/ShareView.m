@@ -36,7 +36,7 @@
     self.cancelBtn.layer.masksToBounds = YES;
 
     
-    [self setupBorder:CLEAR_COLOR cornerRadius:5.0];
+    [self setupBorder:CLEAR_COLOR cornerRadius:10.0];
 }
 
 

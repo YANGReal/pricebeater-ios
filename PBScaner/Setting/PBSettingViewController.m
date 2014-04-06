@@ -139,7 +139,7 @@
         label.textColor = COLOR_RGB(91, 91, 91);
         [cell.contentView addSubview:label];
         
-        locationLabel = [[UILabel alloc] initWithFrame:RECT(label.x+label.width+50, 0, 100, 40)];
+        locationLabel = [[UILabel alloc] initWithFrame:RECT(label.x+label.width+50, 3, 100, 40)];
         //locationLabel.backgroundColor = COLOR_DEFAULT_YELLOW;
          locationLabel.textColor = COLOR_RGB(91, 91, 91);
         locationLabel.textAlignment = NSTextAlignmentRight;
@@ -213,6 +213,15 @@
         
    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0)
+    {
+        return 26;
+    }
+    return 20;
 }
 
 #pragma mark - UIGesture delegate method

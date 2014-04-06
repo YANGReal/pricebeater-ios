@@ -11,7 +11,8 @@
 #import "PBScanTagView.h"
 #import "GoodsListViewController.h"
 #import "AppDelegate.h"
-@interface ScanDetailViewController ()<PBScannerViewDelegate,PBScanTagViewDelegate,GoodsListViewControllerDelagate>
+#import "GoodDetailViewController.h"
+@interface ScanDetailViewController ()<PBScannerViewDelegate,PBScanTagViewDelegate,GoodsListViewControllerDelagate,UITextFieldDelegate>
 {
     BOOL reset;
 }
@@ -26,14 +27,14 @@
 @property (weak , nonatomic) IBOutlet UIButton *tagBtn;
 @property (weak, nonatomic) IBOutlet UILabel *barCodeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *priceTagLabel;
-
+@property (weak, nonatomic) IBOutlet UITextField *searchField;
 @property (weak , nonatomic) IBOutlet UIView *promptView;
-
+@property (weak , nonatomic) IBOutlet UIView *yellowView;
 - (IBAction)back:(id)sender;
 - (IBAction)scanBarCode:(id)sender;
 - (IBAction)scanPriceTag:(id)sender;
 
-
+- (IBAction)searchProduct:(id)sender;
 
 @end
 
@@ -63,21 +64,47 @@
 
 - (void)setupUI
 {
+    self.bottomView.hidden = YES;
+    self.bgView.backgroundColor = CLEAR_COLOR;
+    self.yellowView.backgroundColor = COLOR_DEFAULT_YELLOW;
+    UIImageView *mask = [[UIImageView alloc] initWithFrame:RECT(0, 64, self.view.width, self.view.height-64)];
+    DLog(@"self.height = %f",self.view.height);
+    NSString *imgName = @"scan_mask_iPhone.png";
+    if ([AppUtil isiPhone])
+    {
+        imgName = @"scan_mask_iPad.png";
+        if (!ISIP5)
+        {
+            self.bgView.y-= 6;
+            mask.height = 568-64;
+        }
+       
+     
+    }
+    mask.image = [UIImage imageFromMainBundleFile:@"scan_mask_iPad.png"];
+    
+    [self.view.layer addSublayer:mask.layer];
+
     [self.view.layer addSublayer:self.topView.layer];
     [self.view.layer addSublayer:self.bottomView.layer];
     [self.view.layer addSublayer:self.label.layer];
-    self.bgView.center = self.view.center;
+   // self.bgView.center = self.view.center;
     [self.view.layer addSublayer:self.bgView.layer];
     self.promptView.layer.frame = self.promptView.bounds;
     [self.view.layer addSublayer:self.promptView.layer];
     [self.view addSubview:self.promptView];
-    self.promptView.hidden = YES;
+   // self.promptView.hidden = NO;
+    if (!ISIP5)
+    {
+        self.bgView.y += 6;
+    }
+    
     [UIView animateWithDuration:1.0 animations:^{
-        self.line.frame = RECT(2, self.bgView.height-20, 258, 1);
+      //  self.line.frame = RECT(9, self.bgView.height-20, 240, 1);
+        self.line.y = self.bgView.height- 20;
     } completion:^(BOOL finished) {
         [self animate];
     }];
-    
     
 }
     
@@ -118,6 +145,8 @@
         
         self.tabBarController.selectedIndex = 0;
         [((PBMainViewController *)self.tabBarController) highLightedFirstTabBarItem];
+         [((PBMainViewController *)self.tabBarController) revealTabBarWithType:100];
+        
         
     }
 }
@@ -167,7 +196,7 @@
 {
     [UIView animateWithDuration:1.0 animations:^{
        // self.line.frame = RECT(2, 20, 258, 1);
-        self.line.y = 20;
+        self.line.y = 10;
     } completion:^(BOOL finished) {
         
         [UIView animateWithDuration:1.0 animations:^{
@@ -175,7 +204,6 @@
             self.line.y = self.bgView.height -20;
         } completion:^(BOOL finished) {
             [self animate];
-            
         }];
     }];
 }
@@ -233,13 +261,15 @@
 - (void)showPromptView
 {
     self.promptView.hidden = NO;
-    self.bottomView.hidden = YES;
+     [(PBMainViewController *)self.tabBarController revealTabBarWithType:100];
+    //self.bottomView.hidden = YES;
 }
 
 - (void)hidePromptView
 {
     self.promptView.hidden = YES;
-    self.bottomView.hidden = NO;
+    [(PBMainViewController *)self.tabBarController hideTabBarWithType:100];
+  //  self.bottomView.hidden = NO;
 
 }
 
@@ -253,9 +283,14 @@
 - (IBAction)scanPriceTag:(id)sender
 {
 
-    [self performSelectorInBackground:@selector(startScanPriceTag) withObject:nil];
+  //  [self performSelectorInBackground:@selector(startScanPriceTag) withObject:nil];
 }
 
+- (IBAction)searchProduct:(id)sender
+{
+    [self loadDataFromServerWithText:self.searchField.text];
+    [self.searchField resignFirstResponder];
+}
 
 #pragma mark - PBScanTagViewDelegate method
 
@@ -281,8 +316,8 @@
 {
     [super viewWillDisappear:animated];
    
-    [self.scanTagView removeFromSuperview];
-    [self.scanTagView free];
+   // [self.scanTagView removeFromSuperview];
+    //[self.scanTagView free];
     self.scanTagView = nil;
     [self.readerView removeFromSuperview];
     self.readerView = nil;
@@ -312,10 +347,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //if (reset)
     {
         if (self.scanType == barCodeType)
         {
+          
+            [self hidePromptView];
             [self.readerView removeFromSuperview];
             self.readerView = nil;
             [self performSelectorInBackground:@selector(startScanBarCode) withObject:nil];
@@ -329,6 +365,33 @@
         }
     }
 }
+
+
+#pragma mark - UITextFieldDelegate method
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self loadDataFromServerWithText:textField.text];
+    [textField resignFirstResponder];
+    return YES;
+}
+
+#pragma mark - 搜索数据
+
+- (void)loadDataFromServerWithText:(NSString *)text
+{
+    if (text.length == 0)
+    {
+        return;
+    }
+    NSString *url = [SEARCH_URL(text) stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    GoodDetailViewController *detailVC = [[GoodDetailViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"GoodDetailViewController"] bundle:nil];
+    detailVC.urlString = url;
+    detailVC.type = 100;
+    [self presentViewController:detailVC animated:YES completion:nil];
+}
+
+
 
 #pragma mark - Memory management
 - (void)didReceiveMemoryWarning

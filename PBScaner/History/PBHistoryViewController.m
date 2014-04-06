@@ -116,8 +116,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    NSString *nibName = nil;
+    if ([AppUtil isiPhone])
+    {
+        nibName = @"GoodsCell";
+    }
+    else
+    {
+        nibName = @"GoodsCell_iPad";
+    }
+
     
-    GoodsCell *cell = [[[NSBundle mainBundle] loadNibNamed:@"GoodsCell" owner:self options:nil] lastObject];
+    GoodsCell *cell = [[[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil] lastObject];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.data = self.historyArray[indexPath.row];
     return cell;

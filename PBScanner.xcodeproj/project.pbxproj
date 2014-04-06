@@ -86,8 +86,17 @@
 		6E8A4D1018CB02F20062820A /* ShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E8A4D0F18CB02F20062820A /* ShareView.m */; };
 		6E8A4D1218CB030D0062820A /* ShareView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E8A4D1118CB030D0062820A /* ShareView_iPhone.xib */; };
 		6EA2EA7D18CADF670058F4B1 /* AttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EA2EA7C18CADF670058F4B1 /* AttributedLabel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6EB3931A18F0FC7E0029FE80 /* scan_mask_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EB3931818F0FC7E0029FE80 /* scan_mask_iPad.png */; };
+		6EB3931B18F0FC7E0029FE80 /* scan_mask_iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EB3931918F0FC7E0029FE80 /* scan_mask_iPhone.png */; };
+		6EB3931F18F10B610029FE80 /* PBPriceTrendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EB3931D18F10B610029FE80 /* PBPriceTrendViewController.m */; };
+		6EB3932018F10B610029FE80 /* PBPriceTrendViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB3931E18F10B610029FE80 /* PBPriceTrendViewController_iPhone.xib */; };
+		6EB3932218F10BAA0029FE80 /* PBPriceTrendViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB3932118F10BAA0029FE80 /* PBPriceTrendViewController_iPad.xib */; };
+		6EB3932518F123380029FE80 /* GoodsCell_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB3932418F123380029FE80 /* GoodsCell_iPad.xib */; };
 		6EE72E1318CB09C400E0C93A /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE72E1218CB09C400E0C93A /* Social.framework */; };
 		6EE72E1518CB0B3800E0C93A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EE72E1418CB0B3800E0C93A /* Accounts.framework */; };
+		6EF762BA18F134B60065C004 /* ShareView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EF762B918F134B60065C004 /* ShareView_iPad.xib */; };
+		6EF762BD18F1354D0065C004 /* sharebox.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EF762BB18F1354D0065C004 /* sharebox.png */; };
+		6EF762BE18F1354D0065C004 /* sharebox@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EF762BC18F1354D0065C004 /* sharebox@2X.png */; };
 		76674A3618B50B17000B268F /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 76674A2418B50B17000B268F /* AFHTTPRequestOperation.m */; };
 		76674A3718B50B17000B268F /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76674A2618B50B17000B268F /* AFHTTPRequestOperationManager.m */; };
 		76674A3818B50B17000B268F /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 76674A2818B50B17000B268F /* AFHTTPSessionManager.m */; };
@@ -142,7 +151,7 @@
 		7669C89318B84CB600C7ECF1 /* icon_scan.png in Resources */ = {isa = PBXBuildFile; fileRef = 7669C84F18B84CB600C7ECF1 /* icon_scan.png */; };
 		7669C89418B84CB600C7ECF1 /* icon_scan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7669C85018B84CB600C7ECF1 /* icon_scan@2x.png */; };
 		7669C89518B84CB600C7ECF1 /* icon_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 7669C85118B84CB600C7ECF1 /* icon_search.png */; };
-		7669C89618B84CB600C7ECF1 /* iicon_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7669C85218B84CB600C7ECF1 /* iicon_search@2x.png */; };
+		7669C89618B84CB600C7ECF1 /* icon_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7669C85218B84CB600C7ECF1 /* icon_search@2x.png */; };
 		7669C89718B84CB600C7ECF1 /* icon_setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 7669C85318B84CB600C7ECF1 /* icon_setting.png */; };
 		7669C89818B84CB600C7ECF1 /* icon_setting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7669C85418B84CB600C7ECF1 /* icon_setting@2x.png */; };
 		7669C89918B84CB600C7ECF1 /* icon_share.png in Resources */ = {isa = PBXBuildFile; fileRef = 7669C85518B84CB600C7ECF1 /* icon_share.png */; };
@@ -319,8 +328,18 @@
 		6E8A4D1118CB030D0062820A /* ShareView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareView_iPhone.xib; sourceTree = "<group>"; };
 		6EA2EA7B18CADF670058F4B1 /* AttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributedLabel.h; sourceTree = "<group>"; };
 		6EA2EA7C18CADF670058F4B1 /* AttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributedLabel.m; sourceTree = "<group>"; };
+		6EB3931818F0FC7E0029FE80 /* scan_mask_iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan_mask_iPad.png; sourceTree = "<group>"; };
+		6EB3931918F0FC7E0029FE80 /* scan_mask_iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scan_mask_iPhone.png; sourceTree = "<group>"; };
+		6EB3931C18F10B610029FE80 /* PBPriceTrendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PBPriceTrendViewController.h; path = PriceTrend/PBPriceTrendViewController.h; sourceTree = "<group>"; };
+		6EB3931D18F10B610029FE80 /* PBPriceTrendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PBPriceTrendViewController.m; path = PriceTrend/PBPriceTrendViewController.m; sourceTree = "<group>"; };
+		6EB3931E18F10B610029FE80 /* PBPriceTrendViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PBPriceTrendViewController_iPhone.xib; path = PriceTrend/PBPriceTrendViewController_iPhone.xib; sourceTree = "<group>"; };
+		6EB3932118F10BAA0029FE80 /* PBPriceTrendViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PBPriceTrendViewController_iPad.xib; path = PriceTrend/PBPriceTrendViewController_iPad.xib; sourceTree = "<group>"; };
+		6EB3932418F123380029FE80 /* GoodsCell_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GoodsCell_iPad.xib; path = GoodsCell/GoodsCell_iPad.xib; sourceTree = "<group>"; };
 		6EE72E1218CB09C400E0C93A /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		6EE72E1418CB0B3800E0C93A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		6EF762B918F134B60065C004 /* ShareView_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareView_iPad.xib; sourceTree = "<group>"; };
+		6EF762BB18F1354D0065C004 /* sharebox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sharebox.png; sourceTree = "<group>"; };
+		6EF762BC18F1354D0065C004 /* sharebox@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sharebox@2X.png"; sourceTree = "<group>"; };
 		76674A2118B50A74000B268F /* PBColorMacro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PBColorMacro.h; sourceTree = "<group>"; };
 		76674A2318B50B17000B268F /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		76674A2418B50B17000B268F /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
@@ -401,7 +420,7 @@
 		7669C84F18B84CB600C7ECF1 /* icon_scan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_scan.png; sourceTree = "<group>"; };
 		7669C85018B84CB600C7ECF1 /* icon_scan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_scan@2x.png"; sourceTree = "<group>"; };
 		7669C85118B84CB600C7ECF1 /* icon_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_search.png; sourceTree = "<group>"; };
-		7669C85218B84CB600C7ECF1 /* iicon_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iicon_search@2x.png"; sourceTree = "<group>"; };
+		7669C85218B84CB600C7ECF1 /* icon_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_search@2x.png"; sourceTree = "<group>"; };
 		7669C85318B84CB600C7ECF1 /* icon_setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_setting.png; sourceTree = "<group>"; };
 		7669C85418B84CB600C7ECF1 /* icon_setting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_setting@2x.png"; sourceTree = "<group>"; };
 		7669C85518B84CB600C7ECF1 /* icon_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_share.png; sourceTree = "<group>"; };
@@ -812,6 +831,7 @@
 				6E25EEC118C75B06002E32CE /* GoodsCell.h */,
 				6E25EEC218C75B06002E32CE /* GoodsCell.m */,
 				6E25EEC418C75D7E002E32CE /* GoodsCell.xib */,
+				6EB3932418F123380029FE80 /* GoodsCell_iPad.xib */,
 			);
 			name = Goods;
 			sourceTree = "<group>";
@@ -920,6 +940,7 @@
 				6E8A4D0E18CB02F20062820A /* ShareView.h */,
 				6E8A4D0F18CB02F20062820A /* ShareView.m */,
 				6E8A4D1118CB030D0062820A /* ShareView_iPhone.xib */,
+				6EF762B918F134B60065C004 /* ShareView_iPad.xib */,
 			);
 			path = ShareView;
 			sourceTree = "<group>";
@@ -933,9 +954,24 @@
 			path = AttributedLabel;
 			sourceTree = "<group>";
 		};
+		6EB3932318F11A560029FE80 /* PBPriceTrendViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6EB3931C18F10B610029FE80 /* PBPriceTrendViewController.h */,
+				6EB3931D18F10B610029FE80 /* PBPriceTrendViewController.m */,
+				6EB3931E18F10B610029FE80 /* PBPriceTrendViewController_iPhone.xib */,
+				6EB3932118F10BAA0029FE80 /* PBPriceTrendViewController_iPad.xib */,
+			);
+			name = PBPriceTrendViewController;
+			sourceTree = "<group>";
+		};
 		766749E918B4FB8A000B268F /* images */ = {
 			isa = PBXGroup;
 			children = (
+				6EF762BB18F1354D0065C004 /* sharebox.png */,
+				6EF762BC18F1354D0065C004 /* sharebox@2X.png */,
+				6EB3931818F0FC7E0029FE80 /* scan_mask_iPad.png */,
+				6EB3931918F0FC7E0029FE80 /* scan_mask_iPhone.png */,
 				6E1EC7EF18E051C8001DCB75 /* icon_contact_add.png */,
 				6E1EC7F018E051C8001DCB75 /* icon_contact_add@2x.png */,
 				6E1EC7F118E051C8001DCB75 /* icon_contact_mail.png */,
@@ -981,7 +1017,7 @@
 				7669C84F18B84CB600C7ECF1 /* icon_scan.png */,
 				7669C85018B84CB600C7ECF1 /* icon_scan@2x.png */,
 				7669C85118B84CB600C7ECF1 /* icon_search.png */,
-				7669C85218B84CB600C7ECF1 /* iicon_search@2x.png */,
+				7669C85218B84CB600C7ECF1 /* icon_search@2x.png */,
 				7669C85318B84CB600C7ECF1 /* icon_setting.png */,
 				7669C85418B84CB600C7ECF1 /* icon_setting@2x.png */,
 				7669C85518B84CB600C7ECF1 /* icon_share.png */,
@@ -1048,6 +1084,7 @@
 				6E25A6EB18CC712F00E137B3 /* GoodDetailViewController */,
 				6E25EEC018C758E5002E32CE /* Goods */,
 				6E25A6E218CC67EC00E137B3 /* ScanDetailViewController */,
+				6EB3932318F11A560029FE80 /* PBPriceTrendViewController */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -1535,6 +1572,8 @@
 				6E1EC7FA18E051C8001DCB75 /* icon_contact_add@2x.png in Resources */,
 				6E1EC7FC18E051C8001DCB75 /* icon_contact_mail@2x.png in Resources */,
 				6E25EEC518C75D7E002E32CE /* GoodsCell.xib in Resources */,
+				6EB3932518F123380029FE80 /* GoodsCell_iPad.xib in Resources */,
+				6EF762BD18F1354D0065C004 /* sharebox.png in Resources */,
 				7669C8A118B84CB600C7ECF1 /* maple.png in Resources */,
 				7669C88118B84CB600C7ECF1 /* icon_facebook.png in Resources */,
 				6E1E21FF18C3816B00B2C3FC /* PBSettingViewController_iPad.xib in Resources */,
@@ -1547,17 +1586,20 @@
 				6E1EC7FB18E051C8001DCB75 /* icon_contact_mail.png in Resources */,
 				7669C8A918B84CB600C7ECF1 /* scan_barcode_big.png in Resources */,
 				6E1EC80C18E072FE001DCB75 /* iTunesArtwork@2x in Resources */,
+				6EB3932218F10BAA0029FE80 /* PBPriceTrendViewController_iPad.xib in Resources */,
 				6E1E221118C3831D00B2C3FC /* PBHistoryViewController_iPhone.xib in Resources */,
 				6E1EC7F918E051C8001DCB75 /* icon_contact_add.png in Resources */,
 				7669C88A18B84CB600C7ECF1 /* icon_history@2x.png in Resources */,
 				7669C88F18B84CB600C7ECF1 /* icon_printer.png in Resources */,
 				6E1E222418C3844200B2C3FC /* PBSearchViewController_iPad.xib in Resources */,
 				7669C87818B84CB600C7ECF1 /* back@2x.png in Resources */,
+				6EB3932018F10B610029FE80 /* PBPriceTrendViewController_iPhone.xib in Resources */,
 				6E25EEB618C74E11002E32CE /* corner1.png in Resources */,
 				7669C8AB18B84CB600C7ECF1 /* scan_barcode_small.png in Resources */,
 				6E1E220118C3816B00B2C3FC /* SettingConfig.plist in Resources */,
 				6E1EC80818E0618D001DCB75 /* PinterestSDKResources.bundle in Resources */,
 				6E2A336018C4C5390073F6AF /* TermViewController_iPad.xib in Resources */,
+				6EF762BA18F134B60065C004 /* ShareView_iPad.xib in Resources */,
 				7669C88218B84CB600C7ECF1 /* icon_facebook@2x.png in Resources */,
 				7669C88318B84CB600C7ECF1 /* icon_filter.png in Resources */,
 				7669C88418B84CB600C7ECF1 /* icon_filter@2x.png in Resources */,
@@ -1573,6 +1615,7 @@
 				7669C8A018B84CB600C7ECF1 /* logo@2x.png in Resources */,
 				7669C89C18B84CB600C7ECF1 /* icon_twitter@2x.png in Resources */,
 				7669C89E18B84CB600C7ECF1 /* launch@2x.png in Resources */,
+				6EB3931A18F0FC7E0029FE80 /* scan_mask_iPad.png in Resources */,
 				7669C89818B84CB600C7ECF1 /* icon_setting@2x.png in Resources */,
 				7669C88D18B84CB600C7ECF1 /* icon_maillink.png in Resources */,
 				7669C8B318B84CB600C7ECF1 /* search_box.png in Resources */,
@@ -1591,6 +1634,7 @@
 				7669C89B18B84CB600C7ECF1 /* icon_twitter.png in Resources */,
 				6E8A4D1218CB030D0062820A /* ShareView_iPhone.xib in Resources */,
 				785A98A218A57695004CE803 /* InfoPlist.strings in Resources */,
+				6EF762BE18F1354D0065C004 /* sharebox@2X.png in Resources */,
 				7669C88818B84CB600C7ECF1 /* icon_history_price@2x.png in Resources */,
 				7669C8A418B84CB600C7ECF1 /* raccoon_404@2x.png in Resources */,
 				7669C87C18B84CB600C7ECF1 /* dialog_box@2x.png in Resources */,
@@ -1609,7 +1653,8 @@
 				7669C8AD18B84CB600C7ECF1 /* scan_corner.png in Resources */,
 				6E1E21F718C3810800B2C3FC /* LocationViewController_iPhone.xib in Resources */,
 				7669C89518B84CB600C7ECF1 /* icon_search.png in Resources */,
-				7669C89618B84CB600C7ECF1 /* iicon_search@2x.png in Resources */,
+				6EB3931B18F0FC7E0029FE80 /* scan_mask_iPhone.png in Resources */,
+				7669C89618B84CB600C7ECF1 /* icon_search@2x.png in Resources */,
 				7669C8B518B84CB600C7ECF1 /* search_button.png in Resources */,
 				7669C8A518B84CB600C7ECF1 /* raccoon_about.png in Resources */,
 				785A9A0A18A57E9A004CE803 /* tessdata in Resources */,
@@ -1652,6 +1697,7 @@
 				6E2B03A218C0C5910073D23B /* UIView+Border.m in Sources */,
 				76674A3718B50B17000B268F /* AFHTTPRequestOperationManager.m in Sources */,
 				6E25EEC318C75B06002E32CE /* GoodsCell.m in Sources */,
+				6EB3931F18F10B610029FE80 /* PBPriceTrendViewController.m in Sources */,
 				6E2B038C18C0C2C70073D23B /* UIView+ModifyFrame.m in Sources */,
 				785A98A418A57695004CE803 /* main.m in Sources */,
 				6E1E21F618C3810800B2C3FC /* LocationViewController.m in Sources */,

@@ -32,13 +32,15 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+    [self.contentView addSubview:self.line];
+    self.goodsImgView.contentMode = UIViewContentModeScaleAspectFill;
     self.goodsImgView.clipsToBounds = YES;
     self.descLabel.numberOfLines = 0;
-    self.descLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    //self.descLabel.backgroundColor = [UIColor redColor];
+    self.descLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.line.width = [AppUtil getDeviceWidth]+30;
-    self.line.backgroundColor = COLOR_RGB(192, 192, 192);
-    self.line.height = 0.5;
-
+    self.line.backgroundColor =[UIColor lightGrayColor];
+    self.line.height = 1.0;
 }
 
 - (void)_initViews
@@ -89,8 +91,14 @@
     {
         skuName = [skuName stringByReplacingOccurrencesOfString:span withString:@""];//将<span>去掉
     }
+    CGFloat fontSize = 18;
+    if ([AppUtil isiPhone])
+    {
+        fontSize = 13;
+    }
+    
     self.descLabel.text = skuName;
-    UIFont *font = [UIFont fontWithName:@"Avenir Next" size:13];
+    UIFont *font = [UIFont fontWithName:@"Avenir Next" size:fontSize];
     [self.descLabel setFont:font fromIndex:0 length:skuName.length];
     for (NSString *target in targets)
     {
@@ -99,17 +107,24 @@
         NSRange range = [skuName rangeOfString:str2];
         [self.descLabel setColor:COLOR_DEFAULT_YELLOW fromIndex:range.location length:range.length];
     }
-    
-    CGFloat height = self.height;
-    if (height>84)
+
+    if (self.height>84)
     {
-        CGSize labelSize = [AppUtil getLabelSizeWithText:skuName font:13 width:self.descLabel.width];
+        CGSize labelSize = [AppUtil getLabelSizeWithText:skuName font:fontSize width:self.descLabel.width];
         self.descLabel.height = labelSize.height;
+        self.descLabel.center = CGPointMake(self.descLabel.center.x, self.height/2.0);
         self.fromLabel.y = self.descLabel.y+self.descLabel.height + 10;
         self.priceLabel.y = self.fromLabel.y;
+    }
+    else
+    {
+        CGSize labelSize = [AppUtil getLabelSizeWithText:skuName font:fontSize width:self.descLabel.width];
+        self.descLabel.height = labelSize.height;
+        self.descLabel.center = CGPointMake(self.descLabel.center.x, self.height/2.0);
 
     }
-    self.line.y = self.height-0.5;
+   
+    self.line.y = self.height-1;
 }
 
 
@@ -121,17 +136,26 @@
     {
         skuName = [skuName stringByReplacingOccurrencesOfString:span withString:@""];//将<span>去掉
     }
-    CGSize size = [AppUtil getLabelSizeWithText:skuName font:13 width:209];
-    
-    CGFloat height = size.height;
-    height += 45;
-    
-    if (height<83)
+    CGSize size;
+    if ([AppUtil isiPhone])
     {
-        return 83;
+        size = [AppUtil getLabelSizeWithText:skuName font:13 width:209];
+        
+        CGFloat height = size.height;
+        height += 45;
+        
+        if (height<83)
+        {
+            return 83;
+        }
+        return height;
     }
-    //DLog(@"height2<<<<< = %f",height);
-    return height;
+    else
+    {
+        // size = [AppUtil getLabelSizeWithText:skuName font:18 width:575];
+        return 82;
+    }
+   
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

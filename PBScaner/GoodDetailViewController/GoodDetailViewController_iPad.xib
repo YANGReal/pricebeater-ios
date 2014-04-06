@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GoodDetailViewController">
             <connections>
                 <outlet property="bottomView" destination="tnQ-FW-twj" id="BVm-iI-KgR"/>
+                <outlet property="historyBtn" destination="8um-qW-G29" id="z55-Lb-6py"/>
                 <outlet property="nextBtn" destination="kCS-XN-fY5" id="oju-aI-aqQ"/>
                 <outlet property="preBtn" destination="BuJ-J7-L1Z" id="r41-Ea-jug"/>
                 <outlet property="shareBtn" destination="QHl-l1-6pv" id="7q9-tg-50s"/>
@@ -51,7 +52,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="BuJ-J7-L1Z">
-                            <rect key="frame" x="42" y="11" width="28" height="28"/>
+                            <rect key="frame" x="25" y="11" width="28" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" backgroundImage="status_bar_next.png">
@@ -62,7 +63,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kCS-XN-fY5">
-                            <rect key="frame" x="160" y="11" width="28" height="28"/>
+                            <rect key="frame" x="111" y="11" width="28" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" backgroundImage="status_bar_previous.png">
@@ -73,7 +74,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8um-qW-G29">
-                            <rect key="frame" x="493" y="11" width="28" height="28"/>
+                            <rect key="frame" x="566" y="11" width="28" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" backgroundImage="icon_history_price.png">
@@ -84,7 +85,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QHl-l1-6pv">
-                            <rect key="frame" x="642" y="10" width="28" height="28"/>
+                            <rect key="frame" x="662" y="10" width="28" height="28"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" backgroundImage="icon_share.png">

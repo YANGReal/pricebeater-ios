@@ -15,6 +15,7 @@
 @property (weak , nonatomic) IBOutlet UITextField *searchBar;
 @property (weak , nonatomic) IBOutlet UIButton *scanButton;
 @property (weak , nonatomic) IBOutlet UILabel *barLabel;
+@property (weak , nonatomic) IBOutlet UIView *yellowView;
 - (IBAction)searchButtonCLicked:(id)sender;
 - (IBAction)scan:(id)sender;
 
@@ -49,7 +50,7 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap)];
     [self.view addGestureRecognizer:tap];
-    
+    self.yellowView.backgroundColor = COLOR_DEFAULT_YELLOW;
     
     if (ISIP5)
     {
@@ -145,7 +146,6 @@
         [self.searchBar resignFirstResponder];
     }
 }
-
 
 
 

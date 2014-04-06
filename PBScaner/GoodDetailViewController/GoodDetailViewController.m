@@ -8,6 +8,7 @@
 
 #import "GoodDetailViewController.h"
 #import "ShareView.h"
+#import "PBPriceTrendViewController.h"
 #import <Social/Social.h>
 #import <Accounts/Accounts.h>
 #import <Pinterest/Pinterest.h>
@@ -19,7 +20,8 @@
 @property (weak , nonatomic) IBOutlet UIButton *nextBtn;
 @property (weak , nonatomic) IBOutlet UIView *bottomView;
 @property (weak , nonatomic) IBOutlet UIButton *shareBtn;
-
+@property (weak , nonatomic) IBOutlet UIButton *historyBtn;
+@property (strong , nonatomic) IBOutlet ShareView *shareView;
 - (IBAction)back:(id)sender;
 
 - (IBAction)preBtnClicked:(id)sender;
@@ -49,13 +51,31 @@
     DLog(@"self.url = %@",_urlString);
     if (self.type == 100)
     {
-        self.bottomView.hidden = YES;
-        self.webView.height = [AppUtil getDeviceHeight] - 64;
+        //self.bottomView.hidden = YES;
+       // self.webView.height = [AppUtil getDeviceHeight] - 64;
     }
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+    [self.view addGestureRecognizer:tap];
+    
     
 }
 
-
+- (void)tapped:(id)sender
+{
+    if (![AppUtil isiPhone])
+    {
+        [UIView animateWithDuration:0.3 animations:^{
+            self.shareView.alpha=  0.0;
+            
+        } completion:^(BOOL finished) {
+            
+            [self.shareView removeFromSuperview];
+            self.shareBtn.userInteractionEnabled = YES;
+            
+        }];
+    }
+}
 
 
 - (IBAction)back:(id)sender
@@ -108,6 +128,10 @@
 - (IBAction)historyBtnClicked:(id)sender
 {
     //DLog(@"url = %@",_historyURL);
+    PBPriceTrendViewController *priceVC = [[PBPriceTrendViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"PBPriceTrendViewController"] bundle:nil];
+    priceVC.urlString = self.historyURL;
+    [self presentViewController:priceVC animated:YES completion:nil];
+    return;
     NSURL *url = [NSURL URLWithString:_historyURL];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
     
@@ -117,27 +141,34 @@
 - (IBAction)shareBtnClicked:(id)sender
 {
     
-    ShareView *shareView = [[[NSBundle mainBundle] loadNibNamed:@"ShareView_iPhone" owner:self options:Nil] lastObject];
-    shareView.delegate = self;
+    NSString *nibName = @"ShareView_iPad";
     if ([AppUtil isiPhone])
     {
-         shareView.y = self.view.height+10;
+        nibName = @"ShareView_iPhone";
+    }
+    self.shareView = [[[NSBundle mainBundle] loadNibNamed:nibName owner:self options:Nil] lastObject];
+    self.shareView.delegate = self;
+    if ([AppUtil isiPhone])
+    {
+        self.shareView.y = self.view.height+10;
     }
     else
-    {   shareView.x = self.view.width/2.0-shareView.width/2.0;
-        shareView.y = self.view.height+10;
+    {
+        self.shareView.alpha = 0.0;
+        self.shareView.x = 358;
+        self.shareView.y = 756;
         self.shareBtn.userInteractionEnabled = NO;
     }
    // shareView.y = self.view.height+10;
-    [self.view addSubview:shareView];
+    [self.view addSubview:self.shareView];
     [UIView animateWithDuration:0.3 animations:^{
         if ([AppUtil isiPhone])
         {
-             shareView.y = self.view.height-shareView.height;
+            self.shareView.y = self.view.height- self.shareView.height;
         }
         else
         {
-            shareView.center = self.view.center;
+            self.shareView.alpha = 1.0;
         }
     }];
 }
@@ -159,6 +190,12 @@
     else
     {
         self.nextBtn.enabled = YES;
+    }
+    if (self.dataArray.count == 0)
+    {
+        self.nextBtn.enabled = NO;
+        self.preBtn.enabled = NO;
+        self.historyBtn.enabled = NO;
     }
 }
 

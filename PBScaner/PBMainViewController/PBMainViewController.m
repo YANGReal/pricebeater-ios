@@ -58,16 +58,21 @@
     self.tabBar.hidden = YES;
     CGFloat iconSpace = 0;
     CGFloat titleSpace = 0;
+    CGFloat x1 = 0;
+    CGFloat x2 = 0;
     if([AppUtil isiPhone])
     {
         iconSpace = 50;
-      
         titleSpace = 17;
+        x1 = 30;
+        x2 = 10;
     }
     else
     {
-        iconSpace = 200;
-        titleSpace = 170;
+        iconSpace = 100;
+        titleSpace = 65;
+        x1 = 181;
+        x2 = 165;
     }
 
     CGRect rect = [[UIScreen mainScreen] bounds];
@@ -80,11 +85,11 @@
     CGFloat btnWidth = rect.size.width/4.0;
     for (int i = 0;i<4;i++)
     {
-        UIImageView *iconView = [[UIImageView alloc] initWithFrame:RECT(30+26*i+iconSpace*i, 5, 26,26)];
+        UIImageView *iconView = [[UIImageView alloc] initWithFrame:RECT(x1+26*i+iconSpace*i, 5, 26,26)];
         iconView.image = [UIImage imageNamed:iconArr[i]];
         [self.myTabBar addSubview:iconView];
         
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:RECT(10+60*i+titleSpace*i, 30, 60, 20)];
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:RECT(x2+60*i+titleSpace*i, 30, 60, 20)];
         titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:9];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.textColor = [UIColor colorWithHexString:@"#B3B2B2"];
@@ -98,12 +103,21 @@
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.tag = i+100;
-        button.frame = RECT(i*btnWidth, 0, rect.size.width/4.0, 49);
+       // button.backgroundColor = COLOR_DEFAULT_YELLOW;
+      
+        if ([AppUtil isiPhone])
+        {
+             button.frame = RECT(i*btnWidth, 0, rect.size.width/4.0, 49);
+        }
+        else
+        {
+            button.frame = RECT(100*i+160+10*i, 0, 100, 49);
+        }
         [button addTarget:self action:@selector(tabBarTapped:) forControlEvents:UIControlEventTouchUpInside];
         [self.myTabBar addSubview:button];
     }
-    UIView *line = [[UIView alloc] initWithFrame:RECT(0, 0, [AppUtil getDeviceWidth],1)];
-    line.backgroundColor = COLOR_LIGHT_GRAY;
+    UIView *line = [[UIView alloc] initWithFrame:RECT(0, 0, [AppUtil getDeviceWidth],0.5)];
+    line.backgroundColor = [UIColor colorWithHexString:@"#525252"];
     [self.myTabBar addSubview:line];
 }
 

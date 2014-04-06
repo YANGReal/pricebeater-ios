@@ -93,10 +93,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"cell";
+    NSString *nibName = nil;
+    if ([AppUtil isiPhone])
+    {
+        nibName = @"GoodsCell";
+    }
+    else
+    {
+        nibName = @"GoodsCell_iPad";
+    }
     GoodsCell *cell = (GoodsCell *)[tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell)
     {
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"GoodsCell" owner:self options:nil] lastObject];
+        cell = [[[NSBundle mainBundle] loadNibNamed:nibName owner:self options:nil] lastObject];
     }
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
