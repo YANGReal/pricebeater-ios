@@ -205,7 +205,7 @@
    }
    if (indexPath.section == 2&&indexPath.row == 0)
    {
-       NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/cn/app/ibooks/id364709193?mt=8"];
+       NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8"];
        [[UIApplication sharedApplication] openURL:url];
    }
    if (indexPath.section == 2&&indexPath.row == 1)

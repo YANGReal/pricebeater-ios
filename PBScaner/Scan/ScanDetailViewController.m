@@ -68,7 +68,7 @@
     self.bgView.backgroundColor = CLEAR_COLOR;
     self.yellowView.backgroundColor = COLOR_DEFAULT_YELLOW;
     UIImageView *mask = [[UIImageView alloc] initWithFrame:RECT(0, 64, self.view.width, self.view.height-64)];
-    DLog(@"self.height = %f",self.view.height);
+  //  DLog(@"self.height = %f",self.view.height);
     NSString *imgName = @"scan_mask_iPhone.png";
     if ([AppUtil isiPhone])
     {
@@ -101,7 +101,7 @@
     
     [UIView animateWithDuration:1.0 animations:^{
       //  self.line.frame = RECT(9, self.bgView.height-20, 240, 1);
-        self.line.y = self.bgView.height- 20;
+        self.line.y = self.bgView.height- 25;
     } completion:^(BOOL finished) {
         [self animate];
     }];
@@ -201,7 +201,7 @@
         
         [UIView animateWithDuration:1.0 animations:^{
             //self.line.frame = RECT(2, self.bgView.height-20, 258, 1);
-            self.line.y = self.bgView.height -20;
+            self.line.y = self.bgView.height -25;
         } completion:^(BOOL finished) {
             [self animate];
         }];

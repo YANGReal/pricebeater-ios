@@ -20,9 +20,6 @@
 		6E1E220F18C3831D00B2C3FC /* PBHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E220C18C3831D00B2C3FC /* PBHistoryViewController.m */; };
 		6E1E221018C3831D00B2C3FC /* PBHistoryViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1E220D18C3831D00B2C3FC /* PBHistoryViewController_iPad.xib */; };
 		6E1E221118C3831D00B2C3FC /* PBHistoryViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1E220E18C3831D00B2C3FC /* PBHistoryViewController_iPhone.xib */; };
-		6E1E221718C3838F00B2C3FC /* PBScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E221418C3838F00B2C3FC /* PBScanViewController.m */; };
-		6E1E221818C3838F00B2C3FC /* PBScanViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1E221518C3838F00B2C3FC /* PBScanViewController_iPad.xib */; };
-		6E1E221918C3838F00B2C3FC /* PBScanViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1E221618C3838F00B2C3FC /* PBScanViewController_iPhone.xib */; };
 		6E1E221D18C383ED00B2C3FC /* AppUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E221C18C383ED00B2C3FC /* AppUtil.m */; };
 		6E1E222318C3844200B2C3FC /* PBSearchViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6E1E222018C3844200B2C3FC /* PBSearchViewController.mm */; };
 		6E1E222418C3844200B2C3FC /* PBSearchViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E1E222118C3844200B2C3FC /* PBSearchViewController_iPad.xib */; };
@@ -241,10 +238,6 @@
 		6E1E220C18C3831D00B2C3FC /* PBHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBHistoryViewController.m; sourceTree = "<group>"; };
 		6E1E220D18C3831D00B2C3FC /* PBHistoryViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBHistoryViewController_iPad.xib; sourceTree = "<group>"; };
 		6E1E220E18C3831D00B2C3FC /* PBHistoryViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBHistoryViewController_iPhone.xib; sourceTree = "<group>"; };
-		6E1E221318C3838F00B2C3FC /* PBScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBScanViewController.h; sourceTree = "<group>"; };
-		6E1E221418C3838F00B2C3FC /* PBScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBScanViewController.m; sourceTree = "<group>"; };
-		6E1E221518C3838F00B2C3FC /* PBScanViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBScanViewController_iPad.xib; sourceTree = "<group>"; };
-		6E1E221618C3838F00B2C3FC /* PBScanViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PBScanViewController_iPhone.xib; sourceTree = "<group>"; };
 		6E1E221B18C383ED00B2C3FC /* AppUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUtil.h; sourceTree = "<group>"; };
 		6E1E221C18C383ED00B2C3FC /* AppUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUtil.m; sourceTree = "<group>"; };
 		6E1E221F18C3844200B2C3FC /* PBSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBSearchViewController.h; sourceTree = "<group>"; };
@@ -734,17 +727,6 @@
 			path = History;
 			sourceTree = "<group>";
 		};
-		6E1E221218C3838F00B2C3FC /* Scan */ = {
-			isa = PBXGroup;
-			children = (
-				6E1E221318C3838F00B2C3FC /* PBScanViewController.h */,
-				6E1E221418C3838F00B2C3FC /* PBScanViewController.m */,
-				6E1E221518C3838F00B2C3FC /* PBScanViewController_iPad.xib */,
-				6E1E221618C3838F00B2C3FC /* PBScanViewController_iPhone.xib */,
-			);
-			path = Scan;
-			sourceTree = "<group>";
-		};
 		6E1E221A18C383ED00B2C3FC /* AppUtil */ = {
 			isa = PBXGroup;
 			children = (
@@ -1076,7 +1058,6 @@
 				6E1E21F818C3816B00B2C3FC /* Setting */,
 				6E1E220A18C3831D00B2C3FC /* History */,
 				6E1E221E18C3844200B2C3FC /* Search */,
-				6E1E221218C3838F00B2C3FC /* Scan */,
 				6E296E7C18C4A749003E6A6E /* About */,
 				6E1E21F218C3810800B2C3FC /* Location */,
 				6E296E8418C4B7B5003E6A6E /* Contact */,
@@ -1560,7 +1541,6 @@
 				7669C8BA18B84CB600C7ECF1 /* status_bar_previous@2x.png in Resources */,
 				6E25EEB518C74E11002E32CE /* corner2.png in Resources */,
 				6E1E222518C3844200B2C3FC /* PBSearchViewController_iPhone.xib in Resources */,
-				6E1E221818C3838F00B2C3FC /* PBScanViewController_iPad.xib in Resources */,
 				6E1EC80018E051C8001DCB75 /* icon_pinetest@2x.png in Resources */,
 				7669C88518B84CB600C7ECF1 /* icon_hidden.png in Resources */,
 				7669C8B618B84CB600C7ECF1 /* search_button@2x.png in Resources */,
@@ -1609,7 +1589,6 @@
 				6E25EEBA18C74F3E002E32CE /* corner3.png in Resources */,
 				7669C8A818B84CB600C7ECF1 /* raccoon_contact@2x.png in Resources */,
 				7669C8B118B84CB600C7ECF1 /* scan_label_small.png in Resources */,
-				6E1E221918C3838F00B2C3FC /* PBScanViewController_iPhone.xib in Resources */,
 				7669C88018B84CB600C7ECF1 /* icon_expand@2x.png in Resources */,
 				7669C87B18B84CB600C7ECF1 /* dialog_box.png in Resources */,
 				7669C8A018B84CB600C7ECF1 /* logo@2x.png in Resources */,
@@ -1687,7 +1666,6 @@
 				76674A6318B50B23000B268F /* SDWebImageDownloaderOperation.m in Sources */,
 				76674A3A18B50B17000B268F /* AFSecurityPolicy.m in Sources */,
 				6E296E8218C4B7AF003E6A6E /* ContactViewController.m in Sources */,
-				6E1E221718C3838F00B2C3FC /* PBScanViewController.m in Sources */,
 				6E1E222318C3844200B2C3FC /* PBSearchViewController.mm in Sources */,
 				6E1E220918C3821B00B2C3FC /* PBBaseViewController.m in Sources */,
 				785A98A818A57695004CE803 /* AppDelegate.mm in Sources */,

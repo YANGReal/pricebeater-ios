@@ -51,6 +51,8 @@ static char operationArrayKey;
                 if (!wself) return;
                 if (image) {
                     wself.image = image;
+                   // wself.contentMode = UIViewContentModeScaleAspectFill;
+                    //wself.clipsToBounds = YES;
                     [wself setNeedsLayout];
                 }
                 if (completedBlock && finished) {

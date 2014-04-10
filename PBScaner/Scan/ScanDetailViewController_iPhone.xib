@@ -74,27 +74,27 @@
                     <color key="backgroundColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="p0d-6w-BUH">
-                    <rect key="frame" x="30" y="182" width="258" height="173"/>
+                    <rect key="frame" x="30" y="177" width="258" height="183"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner1.png" id="BWN-MN-9Oo">
-                            <rect key="frame" x="0.0" y="1" width="13" height="13"/>
+                            <rect key="frame" x="5" y="2" width="13" height="13"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner2.png" id="jpV-Q1-XPr">
-                            <rect key="frame" x="245" y="1" width="13" height="13"/>
+                            <rect key="frame" x="242" y="2" width="13" height="13"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner3.png" id="4Kg-Oo-Sgb">
-                            <rect key="frame" x="0.0" y="160" width="13" height="13"/>
+                            <rect key="frame" x="5" y="168" width="13" height="13"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="corner4.png" id="ps4-Ax-C5O">
-                            <rect key="frame" x="245" y="160" width="13" height="13"/>
+                            <rect key="frame" x="242" y="168" width="13" height="13"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <view contentMode="scaleToFill" id="ADx-0y-OpK">
-                            <rect key="frame" x="12" y="37" width="234" height="1"/>
+                            <rect key="frame" x="12" y="42" width="234" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="1" green="0.7725490196" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         </view>

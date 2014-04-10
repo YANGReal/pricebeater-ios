@@ -8,7 +8,7 @@
 
 #import "PBMainViewController.h"
 #import "PBSearchViewController.h"
-#import "PBScanViewController.h"
+
 #import "PBSettingViewController.h"
 #import "PBHistoryViewController.h"
 #import "ScanDetailViewController.h"

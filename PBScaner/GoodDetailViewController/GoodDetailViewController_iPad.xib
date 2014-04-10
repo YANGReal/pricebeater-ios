@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="bottomView" destination="tnQ-FW-twj" id="BVm-iI-KgR"/>
                 <outlet property="historyBtn" destination="8um-qW-G29" id="z55-Lb-6py"/>
+                <outlet property="navBar" destination="wMA-We-F2h" id="2BR-yW-qeM"/>
                 <outlet property="nextBtn" destination="kCS-XN-fY5" id="oju-aI-aqQ"/>
                 <outlet property="preBtn" destination="BuJ-J7-L1Z" id="r41-Ea-jug"/>
                 <outlet property="shareBtn" destination="QHl-l1-6pv" id="7q9-tg-50s"/>
@@ -28,20 +29,20 @@
                             <rect key="frame" x="314" y="17" width="140" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back.png" id="jwI-Ni-3eC">
-                            <rect key="frame" x="9" y="25" width="17" height="24"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back.png" id="drs-hu-6bC">
+                            <rect key="frame" x="9" y="28" width="11" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9au-CK-6XJ">
-                            <rect key="frame" x="25" y="19" width="46" height="35"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="D8U-fP-0pe">
+                            <rect key="frame" x="21" y="19" width="46" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <state key="normal" title="Back">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="back:" destination="-1" eventType="touchUpInside" id="clq-rs-R0g"/>
+                                <action selector="back:" destination="-1" eventType="touchUpInside" id="5nm-Rr-E8S"/>
                             </connections>
                         </button>
                     </subviews>

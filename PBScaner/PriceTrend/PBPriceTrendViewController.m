@@ -10,7 +10,7 @@
 
 @interface PBPriceTrendViewController ()<UIWebViewDelegate>
 @property (weak , nonatomic) IBOutlet UIWebView *webView;
-
+@property (weak , nonatomic) IBOutlet UIView *navBar;
 - (IBAction)back:(id)sender;
 
 @end
@@ -30,8 +30,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSURL *url = [NSURL URLWithString:self.urlString];
+    NSURL *url = [NSURL URLWithString:_urlString];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
+    self.navBar.backgroundColor = COLOR_DEFAULT_GRAY;
     
 }
 

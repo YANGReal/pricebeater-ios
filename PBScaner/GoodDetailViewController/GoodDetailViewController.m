@@ -22,6 +22,8 @@
 @property (weak , nonatomic) IBOutlet UIButton *shareBtn;
 @property (weak , nonatomic) IBOutlet UIButton *historyBtn;
 @property (strong , nonatomic) IBOutlet ShareView *shareView;
+@property (weak , nonatomic) IBOutlet UIView *navBar;
+
 - (IBAction)back:(id)sender;
 
 - (IBAction)preBtnClicked:(id)sender;
@@ -45,9 +47,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navBar.backgroundColor = COLOR_DEFAULT_GRAY;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]];
     [self.webView loadRequest:request];
     self.nextBtn.enabled = NO;
+    self.bottomView.backgroundColor = COLOR_DEFAULT_GRAY;
     DLog(@"self.url = %@",_urlString);
     if (self.type == 100)
     {
@@ -57,6 +61,11 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
     [self.view addGestureRecognizer:tap];
+    
+    if (![AppUtil isiPhone])
+    {
+        self.historyBtn.hidden= YES;
+    }
     
     
 }

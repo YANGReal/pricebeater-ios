@@ -40,7 +40,7 @@
     self.descLabel.lineBreakMode = NSLineBreakByWordWrapping;
     self.line.width = [AppUtil getDeviceWidth]+30;
     self.line.backgroundColor =[UIColor lightGrayColor];
-    self.line.height = 1.0;
+    self.line.height = 0.5;
 }
 
 - (void)_initViews
@@ -73,10 +73,10 @@
     NSString *imgURL = [self.data stringAttribute:@"img"];
     NSURL *url = [NSURL URLWithString:imgURL];
     [self.goodsImgView setImageWithURL:url placeholderImage:[UIImage imageFromMainBundleFile:@"logo.png"]];
-    //self.descLabel.text = [self.data stringAttribute:@"skuname"];
     NSString *price = [self.data stringAttribute:@"price"];
     self.priceLabel.text = [NSString stringWithFormat:@"$ %@",price];
     NSString *skuName = [[self.data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
+     self.goodsImgView.contentMode = UIViewContentModeScaleAspectFill;
     [self highlightedTagsWithSkuName:skuName];
 }
 

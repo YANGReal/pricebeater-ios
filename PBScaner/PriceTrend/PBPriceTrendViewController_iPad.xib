@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PBPriceTrendViewController">
             <connections>
+                <outlet property="navBar" destination="aPG-XX-97N" id="1O4-u4-9AR"/>
                 <outlet property="view" destination="iN0-l3-epB" id="qB0-bE-vAy"/>
                 <outlet property="webView" destination="zfz-fU-BNI" id="ar1-4p-jlZ"/>
             </connections>
@@ -23,20 +24,20 @@
                             <rect key="frame" x="314" y="17" width="140" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back.png" id="lzu-Cs-HQa">
-                            <rect key="frame" x="9" y="25" width="17" height="24"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="back.png" id="Wtm-7b-1Xx">
+                            <rect key="frame" x="9" y="28" width="11" height="17"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qi7-ge-SGB">
-                            <rect key="frame" x="25" y="19" width="46" height="35"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eTO-mq-rL8">
+                            <rect key="frame" x="21" y="19" width="46" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <state key="normal" title="Back">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="back:" destination="-1" eventType="touchUpInside" id="Yfy-Jq-rfS"/>
+                                <action selector="back:" destination="-1" eventType="touchUpInside" id="Zjd-mc-ZZ6"/>
                             </connections>
                         </button>
                     </subviews>
