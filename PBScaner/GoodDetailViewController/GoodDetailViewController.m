@@ -24,6 +24,8 @@
 @property (strong , nonatomic) IBOutlet ShareView *shareView;
 @property (weak , nonatomic) IBOutlet UIView *navBar;
 
+@property (strong , nonatomic) NSString *content;
+
 - (IBAction)back:(id)sender;
 
 - (IBAction)preBtnClicked:(id)sender;
@@ -47,11 +49,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navBar.backgroundColor = COLOR_DEFAULT_GRAY;
+  //  self.navBar.backgroundColor = COLOR_DEFAULT_GRAY;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]];
     [self.webView loadRequest:request];
     self.nextBtn.enabled = NO;
-    self.bottomView.backgroundColor = COLOR_DEFAULT_GRAY;
+   // self.bottomView.backgroundColor = COLOR_DEFAULT_GRAY;
     DLog(@"self.url = %@",_urlString);
     if (self.type == 100)
     {
@@ -59,19 +61,87 @@
        // self.webView.height = [AppUtil getDeviceHeight] - 64;
     }
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
-    [self.view addGestureRecognizer:tap];
-    
     if (![AppUtil isiPhone])
     {
         self.historyBtn.hidden= YES;
     }
     
+    //DLog(@"self.dataArray = %@",self.dataArray);
+    if (self.dataArray.count == 0)
+    {
+        [self loadDataFromServerWithText:self.keyword];
+    }
+}
+
+
+- (void)loadDataFromServerWithText:(NSString *)text
+{
+    NSDictionary *params = [NSDictionary dictionaryWithObject:text forKey:@"text"];
+    [NBNetworkEngine loadDataWithURL:kRequestURL params:params completeHander:^(id jsonObject, BOOL success) {
+        
+         //DLog(@"obj =>>>>>>>>> %@",jsonObject);
+        
+        if (success)
+        {
+            NSDictionary *dict = (NSDictionary *)jsonObject;
+            NSArray *list = [dict objectForKey:@"response"];
+            if (list.count!=0)
+            {
+                
+                [self findLowestPriceInProductData:list];
+            }
+        }
+    }];
+}
+
+#pragma mark-
+
+- (void)findLowestPriceInProductData:(NSArray *)array;
+{
+    NSMutableArray *priceArray = [NSMutableArray array];
+    for (NSDictionary *product in array)
+    {
+        NSString *price = [product stringAttribute:@"price"];
+        NSNumber *num = [NSNumber numberWithDouble:price.doubleValue];
+        [priceArray addObject:num];
+    }
+    NSArray *arr = [priceArray sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+       
+       return [obj1 compare:obj2];
+   }];
+    NSNumber *lowestPrice = arr[0];
+   // DLog(@"arr = %@",arr);
+    NSString *str = [lowestPrice stringValue];
+    if ([str isEqualToString:@"0"])
+    {
+        str = @"0.0";
+    }
+  //  DLog(@"str = %@",str);
+   // DLog(@"array = %@",array);
+    NSDictionary *dict = nil;
+    for (NSDictionary *product in array)
+    {
+        if ([[product stringAttribute:@"price"] isEqualToString:str])
+        {
+          //  DLog(@"product = %@",product);
+            dict = [product copy];
+            break;
+        }
+    
+    }
+   
+    NSString *price = [dict stringAttribute:@"price"];
+    self.urlString = [dict stringAttribute:@"url"];
+    
+    self.content = [NSString stringWithFormat:@"Check this out: %@ only %@!%@",self.keyword,price,_urlString];
+   
     
 }
 
+#pragma mark - 手势识别
 - (void)tapped:(id)sender
 {
+    
     if (![AppUtil isiPhone])
     {
         [UIView animateWithDuration:0.3 animations:^{
@@ -81,6 +151,8 @@
             
             [self.shareView removeFromSuperview];
             self.shareBtn.userInteractionEnabled = YES;
+            
+            [[self.view viewWithTag:1001] removeFromSuperview];
             
         }];
     }
@@ -105,9 +177,13 @@
     self.urlString = PRODUCT_DETAIL_URL(hash);
     self.historyURL = PRODUCT_HISTORY_URL(hash);
     [self webViewLoadURL:self.urlString];
-
-    
     self.currentIndex --;
+    
+    NSString *skuName = [[data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
+    skuName = [self getProductName:skuName];
+    NSString *price = [data stringAttribute:@"price"];
+    self.content = [NSString stringWithFormat:@"Check this out: %@ only %@! %@",skuName,price,_urlString];
+
     
 }
 - (IBAction)nextBtnClicked:(id)sender
@@ -123,6 +199,12 @@
     self.historyURL = PRODUCT_HISTORY_URL(hash);
     [self webViewLoadURL:self.urlString];
     self.currentIndex ++;
+    
+    NSString *skuName = [[data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
+    skuName = [self getProductName:skuName];
+    NSString *price = [data stringAttribute:@"price"];
+    self.content = [NSString stringWithFormat:@"Check this out: %@ only %@! %@",skuName,price,_urlString];
+    
 }
 
 - (void)webViewLoadURL:(NSString *)urlString
@@ -149,7 +231,7 @@
 
 - (IBAction)shareBtnClicked:(id)sender
 {
-    
+    [self addTapView];
     NSString *nibName = @"ShareView_iPad";
     if ([AppUtil isiPhone])
     {
@@ -204,7 +286,7 @@
     {
         self.nextBtn.enabled = NO;
         self.preBtn.enabled = NO;
-        self.historyBtn.enabled = NO;
+      //  self.historyBtn.enabled = NO;
     }
 }
 
@@ -283,7 +365,7 @@
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
       SLComposeViewController *slComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [slComposerSheet setInitialText:self.urlString];
+        [slComposerSheet setInitialText:self.content];
         [slComposerSheet addURL:[NSURL URLWithString:self.urlString]];
         [self presentViewController:slComposerSheet animated:YES completion:nil];
         
@@ -319,7 +401,7 @@
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
         SLComposeViewController *slComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [slComposerSheet setInitialText:self.urlString];
+        [slComposerSheet setInitialText:self.content];
         [slComposerSheet addURL:[NSURL URLWithString:self.urlString]];
         [self presentViewController:slComposerSheet animated:YES completion:nil];
         [slComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
@@ -353,7 +435,7 @@
 - (void)copyLink
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
-    pb.string = self.urlString;
+    pb.string = self.content;
     UIImage *img = [UIImage imageFromMainBundleFile:@"copied_successfully.png"];
     UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
     imgView.alpha = 0.0;
@@ -382,7 +464,7 @@
         mc.mailComposeDelegate = self;
        // [mc setToRecipients:[NSArray arrayWithObjects:@"info@pricebeater.ca",
                           //   nil]];
-        [mc setMessageBody:self.urlString isHTML:NO];
+        [mc setMessageBody:self.content isHTML:NO];
         
         [self presentViewController:mc animated:YES completion:nil];
         
@@ -462,8 +544,19 @@
     {
         skuName = [skuName stringByReplacingOccurrencesOfString:span withString:@""];//将<span>去掉
     }
-    [pin createPinWithImageURL:imgURL sourceURL:sourceURL description:skuName];
+    [pin createPinWithImageURL:imgURL sourceURL:sourceURL description:self.content];
 }
+
+- (NSString *)getProductName:(NSString *)skuName
+{
+    NSArray *spans = [skuName componentsMatchedByRegex:@"<[^>]*>"];//找到<span标签>
+    for (NSString *span in spans)
+    {
+        skuName = [skuName stringByReplacingOccurrencesOfString:span withString:@""];//将<span>去掉
+    }
+    return skuName;
+}
+
 
 #pragma mark - MFMessageComposeViewController Delegate method
 
@@ -493,6 +586,24 @@
     CGImageRelease(ref);
     return image;
 }
+
+
+#pragma mark - 添加一个透明层
+
+- (void)addTapView
+{
+    if (![AppUtil isiPhone])
+    {
+        UIView *tapView = [[UIView alloc] initWithFrame:self.view.bounds];
+        //tapView.backgroundColor = [UIColor colorWithHexString:@"#ff0000" alpha:0.5];
+        [self.view addSubview:tapView];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapped:)];
+        [tapView addGestureRecognizer:tap];
+        tapView.tag = 1001;
+    }
+}
+
+
 
 
 #pragma mark - memory

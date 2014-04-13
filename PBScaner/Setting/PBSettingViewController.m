@@ -40,7 +40,7 @@
     self.title = @"Setting";
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
-    [self customRightBarButtonItem];
+    //[self customRightBarButtonItem];
 }
 
 - (void)customRightBarButtonItem

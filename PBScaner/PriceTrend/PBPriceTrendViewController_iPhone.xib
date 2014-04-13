@@ -36,8 +36,15 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="sqd-QG-ePF">
+                            <rect key="frame" x="0.0" y="17" width="67" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
                             <connections>
-                                <action selector="back:" destination="-1" eventType="touchUpInside" id="i4X-eH-Vxe"/>
+                                <action selector="back:" destination="-1" eventType="touchUpInside" id="FRw-7G-jpW"/>
                             </connections>
                         </button>
                     </subviews>

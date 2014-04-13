@@ -20,4 +20,6 @@
 
 @property (assign , nonatomic) int currentIndex;
 
+@property (copy , nonatomic) NSString *keyword;
+
 @end

@@ -145,7 +145,7 @@
    {
       if (self.showTabBar == NO)
       {
-        [self hideTabBarWithType:200];   
+       // [self hideTabBarWithType:200];
       }
    }
 }

@@ -388,10 +388,23 @@
     GoodDetailViewController *detailVC = [[GoodDetailViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"GoodDetailViewController"] bundle:nil];
     detailVC.urlString = url;
     detailVC.type = 100;
+    detailVC.keyword = text;
     [self presentViewController:detailVC animated:YES completion:nil];
 }
 
+#pragma mark - 添加一个透明层
 
+- (void)addTapView
+{
+    if (![AppUtil isiPhone])
+    {
+        UIView *tapView = [[UIView alloc] initWithFrame:self.view.bounds];
+        tapView.backgroundColor = [UIColor colorWithHexString:@"#ff0000" alpha:0.5];
+        
+        [self.view addSubview:tapView];
+        //self.view bringSubviewToFront
+    }
+}
 
 #pragma mark - Memory management
 - (void)didReceiveMemoryWarning

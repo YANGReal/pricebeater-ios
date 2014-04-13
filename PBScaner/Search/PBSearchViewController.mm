@@ -94,6 +94,7 @@
     GoodDetailViewController *detailVC = [[GoodDetailViewController alloc] initWithNibName:[AppUtil getNibNameFromUIViewController:@"GoodDetailViewController"] bundle:nil];
     detailVC.urlString = url;
     detailVC.type = 100;
+    detailVC.keyword = text;
     [self presentViewController:detailVC animated:YES completion:nil];
     return;
     [self showMBLoadingWithMessage:@"Loading"];

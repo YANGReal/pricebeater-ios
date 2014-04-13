@@ -118,7 +118,7 @@
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dQb-qJ-wdX">
                     <rect key="frame" x="198" y="433" width="371" height="189"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <string key="text">Ouch! Seems like we can’t find this product in our system with bar code, however, a picture of the price tag might works, would like to give it a try?</string>
+                    <string key="text">Ouch! Seems like we can’t find this product in our system with bar code, however, search might works, would like to give it a try?</string>
                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="24"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>

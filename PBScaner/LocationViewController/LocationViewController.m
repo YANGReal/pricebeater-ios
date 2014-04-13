@@ -8,11 +8,11 @@
 
 #import "LocationViewController.h"
 
-@interface LocationViewController ()<UIGestureRecognizerDelegate>
+@interface LocationViewController ()<UIGestureRecognizerDelegate,UITextFieldDelegate>
 {
     IBOutlet UIView *cell;
     IBOutlet UITextField *textField;
-    
+    UIButton *doneBtn;
 }
 @end
 
@@ -55,6 +55,7 @@
     {
         textField.text = location;
     }
+    [textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
 }
 
 
@@ -79,7 +80,7 @@
 
 - (void)customRightBarButtonItem
 {
-    UIButton *doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    doneBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     doneBtn.frame = RECT(0, 0, 60, 30);
     doneBtn.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:16];
     [doneBtn setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
@@ -87,6 +88,15 @@
     [doneBtn addTarget:self action:@selector(done:) forControlEvents:UIControlEventTouchUpInside];
    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:doneBtn];
+    if ([[AppUtil getObjectForKey:@"location"] length] == 0)
+    {
+        doneBtn.enabled = NO;
+        [doneBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    }
+    else
+    {
+        doneBtn.enabled = YES;
+    }
     
 }
 
@@ -115,7 +125,19 @@
     [textField resignFirstResponder];
 }
 
-
+- (void)textFieldDidChange:(UITextField *)_textField
+{
+    doneBtn.enabled = textField.text.length>0;
+    
+    if (textField.text.length == 0)
+    {
+        [doneBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [doneBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }
+}
 
 
 
