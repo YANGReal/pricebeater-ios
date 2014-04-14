@@ -88,6 +88,14 @@
                 
                 [self findLowestPriceInProductData:list];
             }
+            else
+            {
+                self.content = [NSString stringWithFormat:@"Check this out: $%@ only $0!\n$%@",_keyword,_urlString];
+            }
+        }
+        else
+        {
+            self.content = [NSString stringWithFormat:@"Check this out: $%@ only $0.0!\n$%@",_keyword,_urlString];
         }
     }];
 }
