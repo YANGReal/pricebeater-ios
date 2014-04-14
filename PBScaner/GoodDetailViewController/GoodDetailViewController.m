@@ -128,7 +128,7 @@
     NSString *price = [dict stringAttribute:@"price"];
     self.urlString = [dict stringAttribute:@"url"];
     
-    self.content = [NSString stringWithFormat:@"Check this out: $%@ only $%@!$%@",self.keyword,price,_urlString];
+    self.content = [NSString stringWithFormat:@"Check this out: $%@ only $%@!\n$%@",self.keyword,price,_urlString];
     DLog(@"self.content = %@",_content);
    
     
@@ -178,7 +178,7 @@
     NSString *skuName = [[data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
     skuName = [self getProductName:skuName];
     NSString *price = [data stringAttribute:@"price"];
-    self.content = [NSString stringWithFormat:@"Check this out: %@ only %@! %@",skuName,price,_urlString];
+    self.content = [NSString stringWithFormat:@"Check this out: $%@ only $%@! \n$%@",skuName,price,_urlString];
 
     
 }
@@ -199,7 +199,7 @@
     NSString *skuName = [[data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
     skuName = [self getProductName:skuName];
     NSString *price = [data stringAttribute:@"price"];
-    self.content = [NSString stringWithFormat:@"Check this out: %@ only %@! %@",skuName,price,_urlString];
+    self.content = [NSString stringWithFormat:@"Check this out: $%@ only $%@! \n$%@",skuName,price,_urlString];
     
 }
 
@@ -515,7 +515,7 @@
     {
         MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc] init];
         //controller.recipients = [NSArray arrayWithObject:@"10010"];
-        controller.body = self.urlString;
+        controller.body = self.content;
         controller.messageComposeDelegate = self;
         [self presentViewController:controller animated:YES completion:nil];
         [[[[controller viewControllers] lastObject] navigationItem] setTitle:@"SMS"];//修改短信界面标题
