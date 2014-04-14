@@ -115,9 +115,9 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b0p-8a-t2W">
-                    <rect key="frame" x="26" y="236" width="272" height="94"/>
+                    <rect key="frame" x="25" y="229" width="272" height="110"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <string key="text">Ouch! Seems like we can’t find this product in our system with bar code, however, search might works, would like to give it a try?</string>
+                    <string key="text">Ouch! Seems like we can’t find this product in our system with bar code.Try to type product name or model number into our search bar, that might helps.</string>
                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="16"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>

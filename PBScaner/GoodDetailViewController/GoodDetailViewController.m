@@ -77,10 +77,8 @@
 - (void)loadDataFromServerWithText:(NSString *)text
 {
     NSDictionary *params = [NSDictionary dictionaryWithObject:text forKey:@"text"];
-    [NBNetworkEngine loadDataWithURL:kRequestURL params:params completeHander:^(id jsonObject, BOOL success) {
-        
-         //DLog(@"obj =>>>>>>>>> %@",jsonObject);
-        
+    [NBNetworkEngine loadDataWithURL:kRequestURL params:params completeHander:^(id jsonObject, BOOL success)
+    {
         if (success)
         {
             NSDictionary *dict = (NSDictionary *)jsonObject;
@@ -110,14 +108,11 @@
        return [obj1 compare:obj2];
    }];
     NSNumber *lowestPrice = arr[0];
-   // DLog(@"arr = %@",arr);
     NSString *str = [lowestPrice stringValue];
     if ([str isEqualToString:@"0"])
     {
         str = @"0.0";
     }
-  //  DLog(@"str = %@",str);
-   // DLog(@"array = %@",array);
     NSDictionary *dict = nil;
     for (NSDictionary *product in array)
     {
@@ -133,7 +128,8 @@
     NSString *price = [dict stringAttribute:@"price"];
     self.urlString = [dict stringAttribute:@"url"];
     
-    self.content = [NSString stringWithFormat:@"Check this out: %@ only %@!%@",self.keyword,price,_urlString];
+    self.content = [NSString stringWithFormat:@"Check this out: $%@ only $%@!$%@",self.keyword,price,_urlString];
+    DLog(@"self.content = %@",_content);
    
     
 }
@@ -400,7 +396,7 @@
 {
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
-        SLComposeViewController *slComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        SLComposeViewController *slComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
         [slComposerSheet setInitialText:self.content];
         [slComposerSheet addURL:[NSURL URLWithString:self.urlString]];
         [self presentViewController:slComposerSheet animated:YES completion:nil];

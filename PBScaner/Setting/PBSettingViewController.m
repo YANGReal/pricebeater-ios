@@ -167,10 +167,9 @@
     {
         if ([AppUtil isiPhone])
         {
-            return 5-indexPath.row;
+            return 5+indexPath.row*4;
         }
-        return 1;
-    }
+        return 1;    }
     return 1;
 }
 

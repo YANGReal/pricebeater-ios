@@ -12,12 +12,12 @@
 		<string>Visit website</string>
 		<string>Contact us</string>
 		<string>Term of service</string>
-		<string>Vision</string>
+		<string>Version</string>
 	</array>
 	<key>item2</key>
 	<array>
 		<string>Review on the App store</string>
-		<string>            Share this app</string>
+		<string>Share this app</string>
 	</array>
 </dict>
 </plist>
