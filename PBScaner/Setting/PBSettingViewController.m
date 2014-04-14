@@ -5,13 +5,14 @@
 //  Created by 0day on 14-2-19.
 //  Copyright (c) 2014年 Huo Ju. All rights reserved.
 //
-
+#import <Social/Social.h>
+#import <Accounts/Accounts.h>
 #import "PBSettingViewController.h"
 #import "LocationViewController.h"
 #import "AboutViewController.h"
 #import "ContactViewController.h"
 #import "TermViewController.h"
-@interface PBSettingViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,LocationViewControllerDelegate>
+@interface PBSettingViewController ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate,LocationViewControllerDelegate,UIActionSheetDelegate,MFMailComposeViewControllerDelegate,MFMessageComposeViewControllerDelegate>
 {
     UILabel *locationLabel;
 }
@@ -209,7 +210,8 @@
    }
    if (indexPath.section == 2&&indexPath.row == 1)
    {
-        
+       UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Share to" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter",@"Facebook", @"SMS",@"Mail",nil];
+       [actionSheet showInView:self.view];
    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -222,6 +224,166 @@
     }
     return 20;
 }
+
+#pragma mark - UIActionSheetDelegate method
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    DLog(@"index = %d",buttonIndex);
+    if (buttonIndex == 0)
+    {
+        [self shareToTwitter];
+    }
+    if (buttonIndex == 1)
+    {
+        [self shareToFacebook];
+    }
+     if (buttonIndex == 2)
+     {
+         [self sendSMS];
+     }
+    if (buttonIndex == 3)
+    {
+        [self sendMail];
+    }
+    
+}
+
+
+#pragma mark - Share to Facebook
+
+- (void)shareToFacebook
+{
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        SLComposeViewController *slComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+        [slComposerSheet setInitialText:@"PriceBeater"];
+        NSString *url = @"https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8";
+        [slComposerSheet addURL:[NSURL URLWithString:url]];
+        [self presentViewController:slComposerSheet animated:YES completion:nil];
+        
+        [slComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
+            NSString *output;
+            switch (result) {
+                case SLComposeViewControllerResultCancelled:
+                    output = @"Action Cancelled";
+                    break;
+                case SLComposeViewControllerResultDone:
+                    output = @"Post Successfull";
+                    break;
+                default:
+                    break;
+            }
+            if (result != SLComposeViewControllerResultCancelled)
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook Message" message:output delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+        }];
+        
+    }
+    else
+    {
+        [AppUtil showAlertWithMessage:@"Please setup your Facebook account in Settings"];
+    }
+}
+
+#pragma mark - share to Twitter
+
+- (void)shareToTwitter
+{
+    if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
+    {
+        SLComposeViewController *slComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        [slComposerSheet setInitialText:@"PriceBeater"];
+         NSString *url = @"https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8";
+        [slComposerSheet addURL:[NSURL URLWithString:url]];
+        [self presentViewController:slComposerSheet animated:YES completion:nil];
+        [slComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
+            NSString *output;
+            switch (result) {
+                case SLComposeViewControllerResultCancelled:
+                    output = @"Action Cancelled";
+                    break;
+                case SLComposeViewControllerResultDone:
+                    output = @"Post Successfull";
+                    break;
+                default:
+                    break;
+            }
+            if (result != SLComposeViewControllerResultCancelled)
+            {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Twitter Message" message:output delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                [alert show];
+            }
+        }];
+        
+    }
+    else
+    {
+        [AppUtil showAlertWithMessage:@"Please setup your Twitter account in Settings"];
+    }
+    
+}
+
+#pragma mark - 发送邮件
+- (void)sendMail
+{
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    if (mc)
+    {
+        mc.mailComposeDelegate = self;
+        // [mc setToRecipients:[NSArray arrayWithObjects:@"info@pricebeater.ca",
+        //   nil]];
+        
+        [mc setMessageBody:@"PriceBeater https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8 " isHTML:NO];
+        
+        [self presentViewController:mc animated:YES completion:nil];
+        
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Warning" message:@"Please setup you E-mail account in Setting" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [alert show];
+    }
+    
+}
+
+
+#pragma mark -发送短信
+
+- (void)sendSMS
+{
+    if([MFMessageComposeViewController canSendText])
+    {
+        MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc] init];
+        //controller.recipients = [NSArray arrayWithObject:@"10010"];
+        controller.body = @"PriceBeater https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8";
+        controller.messageComposeDelegate = self;
+        [self presentViewController:controller animated:YES completion:nil];
+        [[[[controller viewControllers] lastObject] navigationItem] setTitle:@"SMS"];//修改短信界面标题
+    }
+    else
+    {
+        [AppUtil showAlertWithMessage:@"Sorry,your device can not send sms!"];
+    }
+}
+
+#pragma mark - MFMessageComposeViewController Delegate method
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result;
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - MFMailComposeViewControllerDelegate method
+
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 #pragma mark - UIGesture delegate method
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
