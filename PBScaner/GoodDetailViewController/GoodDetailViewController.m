@@ -71,6 +71,10 @@
     {
         [self loadDataFromServerWithText:self.keyword];
     }
+    else
+    {
+        [self findLowestPriceInProductData:self.dataArray];
+    }
 }
 
 
@@ -439,6 +443,7 @@
 - (void)copyLink
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
+    
     pb.string = self.content;
     UIImage *img = [UIImage imageFromMainBundleFile:@"copied_successfully.png"];
     UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
