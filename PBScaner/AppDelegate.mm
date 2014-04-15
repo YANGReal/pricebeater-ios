@@ -16,7 +16,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes:@{
                                                            NSForegroundColorAttributeName: COLOR_NAVIGATION_TITLE
                                                            }];
-    [[UINavigationBar appearance] setBarTintColor:COLOR_DEFAULT_GRAY];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithHexString:@"#404040"]];
     //[[UINavigationBar appearance] setBackgroundImage:[UIImage createImageWithColor:COLOR_DEFAULT_GRAY] forBarMetrics:UIBarMetricsLandscapePhonePrompt];
 
     [[UIBarButtonItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: WHITE_COLOR} forState:(UIControlStateNormal)];
