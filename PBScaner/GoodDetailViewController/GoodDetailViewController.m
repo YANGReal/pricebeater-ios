@@ -49,11 +49,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-  //  self.navBar.backgroundColor = COLOR_DEFAULT_GRAY;
+    self.navBar.backgroundColor = COLOR_DEFAULT_GRAY;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlString]];
     [self.webView loadRequest:request];
     self.nextBtn.enabled = NO;
-   // self.bottomView.backgroundColor = COLOR_DEFAULT_GRAY;
+    self.bottomView.backgroundColor = COLOR_DEFAULT_GRAY;
     DLog(@"self.url = %@",_urlString);
     if (self.type == 100)
     {
@@ -82,7 +82,6 @@
         skuName = [self getProductName:skuName];
         NSString *price = [data stringAttribute:@"price"];
         self.content = [NSString stringWithFormat:@"Check this out: $%@ only $%@! \n$%@",skuName,price,_urlString];
-
     }
 }
 

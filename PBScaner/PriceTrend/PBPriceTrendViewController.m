@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view from its nib.
     NSURL *url = [NSURL URLWithString:_urlString];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
-   // self.navBar.backgroundColor = COLOR_DEFAULT_GRAY;
+    self.navBar.backgroundColor = COLOR_DEFAULT_GRAY;
     
 }
 
