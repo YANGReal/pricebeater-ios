@@ -73,7 +73,16 @@
     }
     else
     {
-        [self findLowestPriceInProductData:self.dataArray];
+        NSDictionary *data = self.dataArray[self.currentIndex];
+        NSString *hash = [data stringAttribute:@"urlhash"];
+        self.urlString = PRODUCT_DETAIL_URL(hash);
+        self.historyURL = PRODUCT_HISTORY_URL(hash);
+    
+        NSString *skuName = [[data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
+        skuName = [self getProductName:skuName];
+        NSString *price = [data stringAttribute:@"price"];
+        self.content = [NSString stringWithFormat:@"Check this out: $%@ only $%@! \n$%@",skuName,price,_urlString];
+
     }
 }
 
