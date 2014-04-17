@@ -38,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Setting";
+    self.title = @"Settings";
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     //[self customRightBarButtonItem];
@@ -168,9 +168,10 @@
     {
         if ([AppUtil isiPhone])
         {
-            return 5+indexPath.row*4;
+            return 7+indexPath.row*2;
         }
-        return 1;    }
+        return 1;
+    }
     return 1;
 }
 
@@ -210,7 +211,7 @@
    }
    if (indexPath.section == 2&&indexPath.row == 1)
    {
-       UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Share to" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter",@"Facebook", @"SMS",@"Mail",nil];
+       UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Share to" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Twitter",@"Facebook", @"Message",@"Mail",nil];
        [actionSheet showInView:self.view];
    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -257,8 +258,9 @@
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
         SLComposeViewController *slComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
-        [slComposerSheet setInitialText:@"PriceBeater"];
         NSString *url = @"https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8";
+        NSString *content = [NSString stringWithFormat:@"Check this out! Find lowest gadget price in Canada with Price Beater mobile app %@",url];
+        [slComposerSheet setInitialText:content];
         [slComposerSheet addURL:[NSURL URLWithString:url]];
         [self presentViewController:slComposerSheet animated:YES completion:nil];
         
@@ -295,8 +297,10 @@
     if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook])
     {
         SLComposeViewController *slComposerSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-        [slComposerSheet setInitialText:@"PriceBeater"];
-         NSString *url = @"https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8";
+        
+        NSString *url = @"https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8";
+        NSString *content = [NSString stringWithFormat:@"Check this out! Find lowest gadget price in Canada with Price Beater mobile app %@",url];
+        [slComposerSheet setInitialText:content];
         [slComposerSheet addURL:[NSURL URLWithString:url]];
         [self presentViewController:slComposerSheet animated:YES completion:nil];
         [slComposerSheet setCompletionHandler:^(SLComposeViewControllerResult result) {
@@ -333,11 +337,12 @@
     if (mc)
     {
         mc.mailComposeDelegate = self;
-        // [mc setToRecipients:[NSArray arrayWithObjects:@"info@pricebeater.ca",
-        //   nil]];
-        
-        [mc setMessageBody:@"PriceBeater https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8 " isHTML:NO];
-        
+        [mc setSubject:@"Check Price Beater out!"];
+        NSString *url = @"https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8";
+        NSString *content = [NSString stringWithFormat:@"Check this out! You might be interested in Price Beater mobile app which can help you find lowest gadget price in Canada.\n<a href = %@>%@</a>",url,url];
+        [mc setMessageBody:content isHTML:YES];
+
+
         [self presentViewController:mc animated:YES completion:nil];
         
     }
@@ -357,11 +362,12 @@
     if([MFMessageComposeViewController canSendText])
     {
         MFMessageComposeViewController * controller = [[MFMessageComposeViewController alloc] init];
-        //controller.recipients = [NSArray arrayWithObject:@"10010"];
-        controller.body = @"PriceBeater https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8";
+        NSString *url = @"https://itunes.apple.com/us/app/price-beater-canada/id859758535?ls=1&mt=8";
+        NSString *content = [NSString stringWithFormat:@"Check this out! Find lowest gadget price in Canada with Price Beater mobile app.\n %@",url];
+        controller.body = content;
         controller.messageComposeDelegate = self;
         [self presentViewController:controller animated:YES completion:nil];
-        [[[[controller viewControllers] lastObject] navigationItem] setTitle:@"SMS"];//修改短信界面标题
+        [[[[controller viewControllers] lastObject] navigationItem] setTitle:@"Message"];//修改短信界面标题
     }
     else
     {

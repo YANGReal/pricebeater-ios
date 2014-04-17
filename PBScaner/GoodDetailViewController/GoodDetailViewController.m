@@ -26,6 +26,10 @@
 
 @property (strong , nonatomic) NSString *content;
 
+@property (strong , nonatomic) NSString *mailContent;
+
+@property (strong , nonatomic) NSString *mailTitle;
+
 - (IBAction)back:(id)sender;
 
 - (IBAction)preBtnClicked:(id)sender;
@@ -81,7 +85,9 @@
         NSString *skuName = [[data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
         skuName = [self getProductName:skuName];
         NSString *price = [data stringAttribute:@"price"];
-        self.content = [NSString stringWithFormat:@"Check this out: $%@ only $%@! \n$%@",skuName,price,_urlString];
+        self.content = [NSString stringWithFormat:@"Check this out: %@ only %@! \n%@",skuName,price,_urlString];
+        self.mailContent = [NSString stringWithFormat:@"Check this out! You might be interested in %@, only %@.\n<a href=%@>%@</a>",skuName,price,_urlString,_urlString];
+        self.mailTitle = [NSString stringWithFormat:@"Check this out:%@ for only %@ ",skuName,price];
     }
 }
 
@@ -102,12 +108,16 @@
             }
             else
             {
-                self.content = [NSString stringWithFormat:@"Check this out: $%@ only $0!\n$%@",_keyword,_urlString];
+                self.content = [NSString stringWithFormat:@"Check this out: %@ only 0!\n%@",_keyword,_urlString];
+               self.mailContent = [NSString stringWithFormat:@"Check this out! You might be interested in %@, only 0.\n<a href=%@>%@</a>",_keyword,_urlString,_urlString];
+                self.mailTitle = [NSString stringWithFormat:@"Check this out:%@ for only %@ ",_keyword,@"0"];
             }
         }
         else
         {
-            self.content = [NSString stringWithFormat:@"Check this out: $%@ only $0.0!\n$%@",_keyword,_urlString];
+            self.content = [NSString stringWithFormat:@"Check this out: %@ only 0!\n%@",_keyword,_urlString];
+             self.mailContent = [NSString stringWithFormat:@"Check this out! You might be interested in %@, only 0.\n<a href=%@>%@</a>",_keyword,_urlString,_urlString];
+            self.mailTitle = [NSString stringWithFormat:@"Check this out:%@ for only %@ ",_keyword,@"0"];
         }
     }];
 }
@@ -148,8 +158,10 @@
     NSString *price = [dict stringAttribute:@"price"];
     self.urlString = [dict stringAttribute:@"url"];
     
-    self.content = [NSString stringWithFormat:@"Check this out: $%@ only $%@!\n$%@",self.keyword,price,_urlString];
+    self.content = [NSString stringWithFormat:@"Check this out: %@ only %@!\n%@",self.keyword,price,_urlString];
     DLog(@"self.content = %@",_content);
+     self.mailContent = [NSString stringWithFormat:@"Check this out! You might be interested in %@, only %@.\n<a href=%@>%@</a>",_keyword,price,_urlString,_urlString];
+    self.mailTitle = [NSString stringWithFormat:@"Check this out:%@ for only %@ ",_keyword,price];
    
     
 }
@@ -174,7 +186,7 @@
     }
 }
 
-
+#pragma mark -返回上个ViewController
 - (IBAction)back:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -198,7 +210,9 @@
     NSString *skuName = [[data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
     skuName = [self getProductName:skuName];
     NSString *price = [data stringAttribute:@"price"];
-    self.content = [NSString stringWithFormat:@"Check this out: $%@ only $%@! \n$%@",skuName,price,_urlString];
+    self.content = [NSString stringWithFormat:@"Check this out: %@ only %@! \n%@",skuName,price,_urlString];
+     self.mailContent = [NSString stringWithFormat:@"Check this out! You might be interested in %@, only %@.\n<a href=%@>%@</a>",skuName,price,_urlString,_urlString];
+    self.mailTitle = [NSString stringWithFormat:@"Check this out:%@ for only %@ ",skuName,price];
 
     
 }
@@ -219,7 +233,9 @@
     NSString *skuName = [[data stringAttribute:@"skuname"] stringByRemovingPercentEncoding];
     skuName = [self getProductName:skuName];
     NSString *price = [data stringAttribute:@"price"];
-    self.content = [NSString stringWithFormat:@"Check this out: $%@ only $%@! \n$%@",skuName,price,_urlString];
+    self.content = [NSString stringWithFormat:@"Check this out: %@ only %@! \n%@",skuName,price,_urlString];
+    self.mailContent = [NSString stringWithFormat:@"Check this out! You might be interested in %@, only %@.\n<a href=%@>%@</a>",skuName,price,_urlString,_urlString];
+    self.mailTitle = [NSString stringWithFormat:@"Check this out:%@ for only %@ ",skuName,price];
     
 }
 
@@ -452,7 +468,7 @@
 {
     UIPasteboard *pb = [UIPasteboard generalPasteboard];
     
-    pb.string = self.content;
+    pb.string = self.urlString;
     UIImage *img = [UIImage imageFromMainBundleFile:@"copied_successfully.png"];
     UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
     imgView.alpha = 0.0;
@@ -481,8 +497,8 @@
         mc.mailComposeDelegate = self;
        // [mc setToRecipients:[NSArray arrayWithObjects:@"info@pricebeater.ca",
                           //   nil]];
-        [mc setMessageBody:self.content isHTML:NO];
-        
+        [mc setSubject:_mailTitle];
+        [mc setMessageBody:self.mailContent isHTML:YES];
         [self presentViewController:mc animated:YES completion:nil];
         
     }
